@@ -1,0 +1,71 @@
+version: '3.8'
+
+services:
+  # Redis Database
+  redis:
+    image: redis:7-alpine
+    container_name: ai-sms-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    command: redis-server --appendonly yes
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - ai-sms-network
+
+  # AI SMS Application
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ai-sms-app
+    ports:
+      - "3000:3000"
+    environment:
+      # Storage Configuration
+      - STORAGE_DRIVER=redis
+      - REDIS_URL=redis://redis:6379
+
+      # NextAuth Configuration
+      - NEXTAUTH_URL=http://localhost:3000
+      - NEXTAUTH_SECRET=your-super-secret-key-change-this-in-production
+
+      # Node Environment
+      - NODE_ENV=production
+
+      # Email Configuration (Console mode for local)
+      - MAIL_FROM=safety@airindia.com
+      - MAIL_PROVIDER=console
+    depends_on:
+      redis:
+        condition: service_healthy
+    networks:
+      - ai-sms-network
+    restart: unless-stopped
+
+  # Redis Commander (Optional - Redis GUI)
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    container_name: ai-sms-redis-gui
+    ports:
+      - "8081:8081"
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+    depends_on:
+      - redis
+    networks:
+      - ai-sms-network
+    restart: unless-stopped
+
+volumes:
+  redis-data:
+    driver: local
+
+networks:
+  ai-sms-network:
+    driver: bridge
