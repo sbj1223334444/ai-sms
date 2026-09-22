@@ -62,8 +62,49 @@ services:
       - ai-sms-network
     restart: unless-stopped
 
+  # Ollama - Local LLM Server
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ai-sms-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-data:/root/.ollama
+    networks:
+      - ai-sms-network
+    restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  # Open WebUI - Frontend for Ollama
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: ai-sms-webui
+    ports:
+      - "8080:8080"
+    volumes:
+      - open-webui-data:/app/backend/data
+    environment:
+      - OLLAMA_BASE_URL=http://ollama:11434
+      - WEBUI_SECRET_KEY=your-secret-key-change-this
+      - ENABLE_SIGNUP=true
+    depends_on:
+      - ollama
+    networks:
+      - ai-sms-network
+    restart: unless-stopped
+
 volumes:
   redis-data:
+    driver: local
+  ollama-data:
+    driver: local
+  open-webui-data:
     driver: local
 
 networks:
