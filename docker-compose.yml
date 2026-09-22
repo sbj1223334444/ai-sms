@@ -48,20 +48,6 @@ services:
       - ai-sms-network
     restart: unless-stopped
 
-  # Redis Commander (Optional - Redis GUI)
-  redis-commander:
-    image: rediscommander/redis-commander:latest
-    container_name: ai-sms-redis-gui
-    ports:
-      - "8081:8081"
-    environment:
-      - REDIS_HOSTS=local:redis:6379
-    depends_on:
-      - redis
-    networks:
-      - ai-sms-network
-    restart: unless-stopped
-
   # Ollama - Local LLM Server
   ollama:
     image: ollama/ollama:latest
