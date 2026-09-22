@@ -1,0 +1,433 @@
+{
+  "meta": {
+    "formId": "voluntary-safety-report",
+    "code": "VSR-001",
+    "title": "Voluntary Safety Report",
+    "summary": "Report a hazard, unsafe condition or safety concern. Open to all staff.",
+    "supportsConfidential": true,
+    "attachmentsRequired": false
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "confidential",
+      "station",
+      "placeOfEvent",
+      "dateOfEvent",
+      "flightRelated",
+      "hazardCategory",
+      "concernedArea",
+      "description"
+    ],
+    "properties": {
+      "confidential": {
+        "type": "string",
+        "title": "Submit this report confidentially",
+        "enum": [
+          "No",
+          "Yes"
+        ],
+        "default": "No",
+        "description": "Your name, staff number, email and department are withheld from everyone who handles this report."
+      },
+      "station": {
+        "type": "string",
+        "title": "Station",
+        "enum": [
+          "DEL",
+          "BOM",
+          "BLR",
+          "MAA",
+          "CCU",
+          "HYD",
+          "AMD",
+          "COK",
+          "GOI",
+          "PNQ",
+          "LHR",
+          "JFK",
+          "SIN",
+          "DXB",
+          "SYD"
+        ]
+      },
+      "placeOfEvent": {
+        "type": "string",
+        "title": "Place of event",
+        "maxLength": 255
+      },
+      "dateOfEvent": {
+        "type": "string",
+        "format": "date",
+        "title": "Date of event"
+      },
+      "flightRelated": {
+        "type": "string",
+        "title": "Is the event flight related?",
+        "enum": [
+          "Yes",
+          "No"
+        ]
+      },
+      "environment": {
+        "type": "string",
+        "title": "Environment (significant weather)",
+        "enum": [
+          "Squall",
+          "Frontal activity",
+          "High temperature",
+          "Thunderstorm",
+          "Down draft/Up draft",
+          "Icing",
+          "Windshear",
+          "Gusting wind",
+          "High density altitude",
+          "None",
+          "Unknown",
+          "Others"
+        ]
+      },
+      "hazardCategory": {
+        "type": "string",
+        "title": "Hazard / event type",
+        "enum": [
+          "Flight Operations",
+          "Aircraft Maintenance & Engineering",
+          "Ground Handling",
+          "Cabin Operations",
+          "Airport & Station Operations",
+          "Dangerous Goods (DG) Events",
+          "Security Related Events",
+          "Occupational Health & Safety"
+        ]
+      },
+      "concernedArea": {
+        "type": "string",
+        "title": "Concerned area",
+        "enum": [
+          "Flight Operations",
+          "Engineering",
+          "Ground Handling",
+          "Cabin Operations",
+          "Airport & Station Operations",
+          "Cargo",
+          "Security",
+          "Occupational Health & Safety"
+        ]
+      },
+      "description": {
+        "type": "string",
+        "title": "Description of hazard / event",
+        "maxLength": 5000
+      },
+      "suggestion": {
+        "type": "string",
+        "title": "Suggestion to prevent the hazard / event",
+        "maxLength": 2000
+      }
+    },
+    "dependencies": {
+      "flightRelated": {
+        "oneOf": [
+          {
+            "properties": {
+              "flightRelated": {
+                "const": "Yes"
+              },
+              "flightNo": {
+                "type": "string",
+                "title": "Flight number",
+                "maxLength": 10,
+                "pattern": "^[A-Za-z0-9]{2,3} ?[0-9]{1,4}[A-Za-z]?$"
+              },
+              "flightDate": {
+                "type": "string",
+                "format": "date",
+                "title": "Flight date"
+              },
+              "phaseOfFlight": {
+                "type": "string",
+                "title": "Phase of flight",
+                "enum": [
+                  "Parked",
+                  "Taxiing",
+                  "Take-off",
+                  "Initial climb",
+                  "Climb",
+                  "Cruise",
+                  "Descent",
+                  "Holding",
+                  "Approach",
+                  "Landing",
+                  "Circuit"
+                ]
+              }
+            },
+            "required": [
+              "flightNo",
+              "flightDate",
+              "phaseOfFlight"
+            ]
+          },
+          {
+            "properties": {
+              "flightRelated": {
+                "const": "No"
+              }
+            }
+          }
+        ]
+      },
+      "hazardCategory": {
+        "oneOf": [
+          {
+            "properties": {
+              "hazardCategory": {
+                "const": "Flight Operations"
+              },
+              "hazardType": {
+                "type": "string",
+                "title": "Hazard / event subtype",
+                "enum": [
+                  "Flight Crew Fatigue",
+                  "Runway Excursions",
+                  "Unstable Approaches",
+                  "Loss of Separation",
+                  "FOD on Runway",
+                  "Navigation Errors",
+                  "Bird/Wildlife Strikes",
+                  "Altitude burst",
+                  "GPWS warning",
+                  "SID/STAR deviation",
+                  "Long Flare",
+                  "Structural exceedance",
+                  "SOP deviations",
+                  "Environment",
+                  "Others"
+                ]
+              }
+            }
+          },
+          {
+            "properties": {
+              "hazardCategory": {
+                "const": "Aircraft Maintenance & Engineering"
+              },
+              "hazardType": {
+                "type": "string",
+                "title": "Hazard / event subtype",
+                "enum": [
+                  "Maintenance Personnel Fatigue",
+                  "Tool Control Failures",
+                  "Calibration Issues",
+                  "Incomplete Maintenance Actions",
+                  "Incorrect Component Installation",
+                  "FOD in Aircraft",
+                  "Deferred Defect Monitoring",
+                  "Human Factors Errors",
+                  "SOP deviations",
+                  "Others"
+                ]
+              }
+            }
+          },
+          {
+            "properties": {
+              "hazardCategory": {
+                "const": "Ground Handling"
+              },
+              "hazardType": {
+                "type": "string",
+                "title": "Hazard / event subtype",
+                "enum": [
+                  "Aircraft Damage by GSE",
+                  "Towing Incidents",
+                  "Loading Errors",
+                  "GSE Failure",
+                  "Fuel Spillage",
+                  "Marshalling Errors",
+                  "Baggage Handling Incidents",
+                  "SOP deviations",
+                  "Others"
+                ]
+              }
+            }
+          },
+          {
+            "properties": {
+              "hazardCategory": {
+                "const": "Cabin Operations"
+              },
+              "hazardType": {
+                "type": "string",
+                "title": "Hazard / event subtype",
+                "enum": [
+                  "Turbulence Injuries",
+                  "Galley Equipment Failures",
+                  "Passenger Medical Events",
+                  "Cabin Fire/Smoke",
+                  "Dangerous Goods Incidents",
+                  "Security Threats",
+                  "SOP deviations",
+                  "Others"
+                ]
+              }
+            }
+          },
+          {
+            "properties": {
+              "hazardCategory": {
+                "const": "Airport & Station Operations"
+              },
+              "hazardType": {
+                "type": "string",
+                "title": "Hazard / event subtype",
+                "enum": [
+                  "Foreign Object Debris (FOD)",
+                  "Wildlife Hazard",
+                  "Airside Violations",
+                  "Infrastructure Failures",
+                  "Ramp Safety Breaches",
+                  "Stand Allocation Risks",
+                  "SOP deviations",
+                  "Others"
+                ]
+              }
+            }
+          },
+          {
+            "properties": {
+              "hazardCategory": {
+                "const": "Dangerous Goods (DG) Events"
+              },
+              "hazardType": {
+                "type": "string",
+                "title": "Hazard / event subtype",
+                "enum": [
+                  "Undeclared DG",
+                  "DG Acceptance Errors",
+                  "Leakage Events",
+                  "Lithium Battery Incidents",
+                  "Packaging Deficiencies",
+                  "SOP deviations",
+                  "Others"
+                ]
+              }
+            }
+          },
+          {
+            "properties": {
+              "hazardCategory": {
+                "const": "Security Related Events"
+              },
+              "hazardType": {
+                "type": "string",
+                "title": "Hazard / event subtype",
+                "enum": [
+                  "Unauthorized Access",
+                  "Suspicious Articles",
+                  "Apron Security Breaches",
+                  "Insider Threats",
+                  "Cybersecurity Impacts on Operations",
+                  "SOP deviations",
+                  "Others"
+                ]
+              }
+            }
+          },
+          {
+            "properties": {
+              "hazardCategory": {
+                "const": "Occupational Health & Safety"
+              },
+              "hazardType": {
+                "type": "string",
+                "title": "Hazard / event subtype",
+                "enum": [
+                  "Slips, Trips & Falls",
+                  "Manual Handling Injuries",
+                  "PPE Non-Compliance",
+                  "Heat Stress",
+                  "Noise Exposure",
+                  "Chemical Exposure",
+                  "SOP deviations",
+                  "Others"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "uiSchema": {
+    "confidential": {
+      "ui:widget": "radio",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "placeOfEvent": {
+      "ui:placeholder": "e.g. Bay 34, Terminal 3"
+    },
+    "flightRelated": {
+      "ui:widget": "radio",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "flightNo": {
+      "ui:placeholder": "e.g. ZZ 101"
+    },
+    "description": {
+      "ui:widget": "textarea",
+      "ui:options": {
+        "rows": 6,
+        "fullWidth": true
+      }
+    },
+    "suggestion": {
+      "ui:widget": "textarea",
+      "ui:options": {
+        "rows": 4,
+        "fullWidth": true
+      }
+    },
+    "ui:groups": [
+      {
+        "title": "Confidentiality",
+        "fields": [
+          "confidential"
+        ]
+      },
+      {
+        "title": "The event",
+        "fields": [
+          "station",
+          "placeOfEvent",
+          "dateOfEvent",
+          "flightRelated",
+          "flightNo",
+          "flightDate",
+          "phaseOfFlight",
+          "environment"
+        ]
+      },
+      {
+        "title": "Hazard or event type",
+        "fields": [
+          "hazardCategory",
+          "hazardType",
+          "concernedArea"
+        ]
+      },
+      {
+        "title": "Description",
+        "fields": [
+          "description",
+          "suggestion"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,262 @@
+{
+  "meta": {
+    "formId": "unruly-passenger",
+    "code": "UNR-001",
+    "title": "Unruly Passenger Incident Report",
+    "summary": "Disruptive or unlawful passenger behaviour on board or at the gate.",
+    "supportsConfidential": false,
+    "attachmentsRequired": true
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "contactNo",
+      "base",
+      "flightNo",
+      "flightDate",
+      "phaseOfFlight",
+      "dateOfEvent",
+      "levelOfInterference",
+      "passengers",
+      "locationOfIncident",
+      "description",
+      "actionTaken"
+    ],
+    "properties": {
+      "contactNo": {
+        "type": "string",
+        "title": "Contact number",
+        "maxLength": 255,
+        "pattern": "^[0-9]{10}$"
+      },
+      "base": {
+        "type": "string",
+        "title": "Base",
+        "enum": [
+          "DEL",
+          "BOM",
+          "BLR",
+          "MAA",
+          "CCU",
+          "HYD",
+          "AMD",
+          "COK",
+          "GOI",
+          "PNQ",
+          "LHR",
+          "JFK",
+          "SIN",
+          "DXB",
+          "SYD"
+        ]
+      },
+      "flightNo": {
+        "type": "string",
+        "title": "Flight number",
+        "maxLength": 10,
+        "pattern": "^[A-Za-z0-9]{2,3} ?[0-9]{1,4}[A-Za-z]?$"
+      },
+      "flightDate": {
+        "type": "string",
+        "format": "date",
+        "title": "Flight date"
+      },
+      "phaseOfFlight": {
+        "type": "string",
+        "title": "Phase of flight",
+        "enum": [
+          "Parked",
+          "Taxiing",
+          "Take-off",
+          "Initial climb",
+          "Climb",
+          "Cruise",
+          "Descent",
+          "Holding",
+          "Approach",
+          "Landing",
+          "Circuit"
+        ]
+      },
+      "dateOfEvent": {
+        "type": "string",
+        "format": "date",
+        "title": "Date of event"
+      },
+      "levelOfInterference": {
+        "type": "string",
+        "title": "Level of interference",
+        "enum": [
+          "Level 1",
+          "Level 2",
+          "Level 3"
+        ]
+      },
+      "passengers": {
+        "type": "array",
+        "title": "Passengers",
+        "minItems": 1,
+        "maxItems": 4,
+        "items": {
+          "type": "object",
+          "required": [
+            "name",
+            "seatNo",
+            "gender",
+            "age"
+          ],
+          "properties": {
+            "name": {
+              "type": "string",
+              "title": "Name",
+              "maxLength": 255
+            },
+            "seatNo": {
+              "type": "string",
+              "title": "Seat number",
+              "maxLength": 10
+            },
+            "gender": {
+              "type": "string",
+              "title": "Male / female",
+              "enum": [
+                "Male",
+                "Female"
+              ]
+            },
+            "age": {
+              "type": "integer",
+              "title": "Age",
+              "minimum": 0,
+              "maximum": 130
+            },
+            "height": {
+              "type": "string",
+              "title": "Height",
+              "maxLength": 20
+            },
+            "weight": {
+              "type": "string",
+              "title": "Weight",
+              "maxLength": 20
+            }
+          }
+        }
+      },
+      "locationOfIncident": {
+        "type": "string",
+        "title": "Location of incident",
+        "maxLength": 255
+      },
+      "description": {
+        "type": "string",
+        "title": "Occurrence description",
+        "minLength": 100,
+        "maxLength": 5000
+      },
+      "actionTaken": {
+        "type": "string",
+        "title": "Action taken",
+        "maxLength": 2000
+      }
+    }
+  },
+  "uiSchema": {
+    "contactNo": {
+      "ui:placeholder": "10-digit number"
+    },
+    "flightNo": {
+      "ui:placeholder": "e.g. ZZ 101"
+    },
+    "levelOfInterference": {
+      "ui:help": "Level 1: disruptive behaviour. Level 2: physically abusive behaviour. Level 3: life-threatening behaviour."
+    },
+    "passengers": {
+      "ui:options": {
+        "fullWidth": true,
+        "orderable": false,
+        "addButtonLabel": "Add another passenger"
+      },
+      "items": {
+        "gender": {
+          "ui:widget": "radio",
+          "ui:options": {
+            "inline": true
+          }
+        }
+      }
+    },
+    "locationOfIncident": {
+      "ui:help": "Cabin zone, or elsewhere.",
+      "ui:options": {
+        "fullWidth": true
+      }
+    },
+    "description": {
+      "ui:widget": "textarea",
+      "ui:options": {
+        "rows": 6,
+        "fullWidth": true
+      },
+      "ui:help": "At least 100 characters. Include names, addresses and any medical examination details."
+    },
+    "actionTaken": {
+      "ui:widget": "textarea",
+      "ui:options": {
+        "rows": 4,
+        "fullWidth": true
+      }
+    },
+    "ui:groups": [
+      {
+        "title": "Reporter information",
+        "description": "Your name, email and staff number are taken from your account.",
+        "fields": [
+          "contactNo",
+          "base"
+        ]
+      },
+      {
+        "title": "Flight information",
+        "description": "Aircraft type, sector and registration are filled in automatically from CAE after you submit. You do not need to enter them.",
+        "fields": [
+          "flightNo",
+          "flightDate",
+          "phaseOfFlight",
+          "dateOfEvent"
+        ]
+      },
+      {
+        "title": "Crew",
+        "description": "The pilot in command, first officer, cabin supervisor and up to four crew members, with their staff ID, mobile, email and base, are filled in automatically from CAE after you submit. You do not need to enter them.",
+        "fields": []
+      },
+      {
+        "title": "Level of interference",
+        "fields": [
+          "levelOfInterference"
+        ]
+      },
+      {
+        "title": "Unruly passenger description",
+        "description": "Up to four passengers.",
+        "fields": [
+          "passengers"
+        ]
+      },
+      {
+        "title": "Incident details",
+        "fields": [
+          "locationOfIncident",
+          "description",
+          "actionTaken"
+        ]
+      },
+      {
+        "title": "Documents to attach",
+        "description": "Mandatory documents to attach below: cabin crew work allocation sheet, GD, Unruly Passenger Report form, CS report or details of crew involved, witness statements, passenger notification warning card, crew statements.",
+        "fields": []
+      }
+    ]
+  }
+}

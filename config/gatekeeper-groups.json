@@ -1,0 +1,44 @@
+{
+  "note": "Report type to gatekeeper (safety office) group. Admin-configurable (BRD 3.2). Groups imported from the previous system land here too.",
+  "groups": {
+    "safety-flight-ops": {
+      "name": "Safety Office - Flight Operations",
+      "members": [
+        "s.rangan@airindia.com"
+      ]
+    },
+    "safety-engineering": {
+      "name": "Safety Office - Engineering",
+      "members": [
+        "m.fernandes@airindia.com"
+      ]
+    },
+    "safety-cabin": {
+      "name": "Safety Office - Cabin Safety",
+      "members": [
+        "n.kulkarni@airindia.com"
+      ]
+    },
+    "safety-ground": {
+      "name": "Safety Office - Ground & Cargo",
+      "members": [
+        "n.kulkarni@airindia.com"
+      ]
+    }
+  },
+  "routing": {
+    "voluntary-safety-report": "safety-flight-ops",
+    "bird-strike": "safety-flight-ops",
+    "occurrence-report": "safety-flight-ops",
+    "ground-incident": "safety-ground",
+    "ra-report": "safety-flight-ops",
+    "dg-occurrence": "safety-ground",
+    "air-traffic-incident": "safety-flight-ops",
+    "fatigue-report": "safety-cabin",
+    "laser-interference": "safety-flight-ops",
+    "gps-interference": "safety-flight-ops",
+    "unruly-passenger": "safety-cabin",
+    "runway-incursion": "safety-flight-ops",
+    "death-on-board": "safety-cabin"
+  }
+}

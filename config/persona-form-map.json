@@ -1,0 +1,50 @@
+{
+  "note": "BRD section 6 Persona - Form Mapping. Department values must match the department on the signed-in account.",
+  "map": {
+    "voluntary-safety-report": [
+      "*"
+    ],
+    "bird-strike": [
+      "Flight Operations"
+    ],
+    "occurrence-report": [
+      "Flight Operations"
+    ],
+    "ground-incident": [
+      "Engineering",
+      "AOD",
+      "Cargo"
+    ],
+    "ra-report": [
+      "Flight Operations"
+    ],
+    "dg-occurrence": [
+      "Cargo",
+      "AOD"
+    ],
+    "air-traffic-incident": [
+      "Flight Operations"
+    ],
+    "fatigue-report": [
+      "Cabin Crew",
+      "Flight Operations",
+      "Engineering"
+    ],
+    "laser-interference": [
+      "Flight Operations"
+    ],
+    "gps-interference": [
+      "Flight Operations"
+    ],
+    "unruly-passenger": [
+      "Cabin Crew",
+      "AOD"
+    ],
+    "runway-incursion": [
+      "Flight Operations"
+    ],
+    "death-on-board": [
+      "Cabin Crew"
+    ]
+  }
+}

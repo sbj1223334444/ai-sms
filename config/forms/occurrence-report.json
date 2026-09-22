@@ -1,0 +1,589 @@
+{
+  "meta": {
+    "formId": "occurrence-report",
+    "code": "OCC-001",
+    "title": "Occurrence Report (DGCA Format)",
+    "summary": "Mandatory occurrence reporting in the DGCA structure, sections A to G.",
+    "supportsConfidential": false,
+    "attachmentsRequired": false
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "nationality",
+      "registration",
+      "operator",
+      "dateOfOccurrence",
+      "flightPhase",
+      "flightNo",
+      "from",
+      "to",
+      "dayNightTwilight",
+      "timeOfOccurrence",
+      "locationOfAircraft",
+      "description"
+    ],
+    "properties": {
+      "dateReceivedByDgca": {
+        "type": "string",
+        "format": "date",
+        "title": "Date received by DGCA"
+      },
+      "dgcaOccurrenceNo": {
+        "type": "string",
+        "title": "DGCA occurrence number",
+        "maxLength": 255
+      },
+      "nationality": {
+        "type": "string",
+        "title": "Nationality",
+        "maxLength": 255,
+        "default": "India"
+      },
+      "registration": {
+        "type": "string",
+        "title": "Registration",
+        "maxLength": 255
+      },
+      "operator": {
+        "type": "string",
+        "title": "Owner / operator / hirer",
+        "maxLength": 255,
+        "default": "Air India"
+      },
+      "dateOfOccurrence": {
+        "type": "string",
+        "format": "date",
+        "title": "Date of occurrence"
+      },
+      "flightPhase": {
+        "type": "string",
+        "title": "Flight phase",
+        "enum": [
+          "Parked",
+          "Taxiing",
+          "Take-off",
+          "Initial climb",
+          "Climb",
+          "Cruise",
+          "Descent",
+          "Holding",
+          "Approach",
+          "Landing",
+          "Circuit",
+          "Hover",
+          "Ground: maintenance",
+          "Ground: ground handling",
+          "Ground: unattended",
+          "Ground: taxy"
+        ]
+      },
+      "natureOfFlight": {
+        "type": "string",
+        "title": "Nature of flight",
+        "enum": [
+          "Pax",
+          "Freight",
+          "Survey",
+          "Pleasure",
+          "Agricultural",
+          "Business",
+          "Club",
+          "Private",
+          "Positioning",
+          "Ferry",
+          "Test",
+          "Training",
+          "Towing"
+        ]
+      },
+      "aircraftManufacturer": {
+        "type": "string",
+        "title": "Aircraft manufacturer",
+        "maxLength": 255
+      },
+      "stateOfRegistry": {
+        "type": "string",
+        "title": "State of registry",
+        "maxLength": 255
+      },
+      "aircraftModel": {
+        "type": "string",
+        "title": "Aircraft model",
+        "maxLength": 255
+      },
+      "aircraftTypeSeries": {
+        "type": "string",
+        "title": "Aircraft type and series",
+        "maxLength": 255
+      },
+      "flightNo": {
+        "type": "string",
+        "title": "Flight number",
+        "maxLength": 10,
+        "pattern": "^[A-Za-z0-9]{2,3} ?[0-9]{1,4}[A-Za-z]?$"
+      },
+      "flightDate": {
+        "type": "string",
+        "format": "date",
+        "title": "Flight date"
+      },
+      "from": {
+        "type": "string",
+        "title": "From",
+        "maxLength": 255
+      },
+      "to": {
+        "type": "string",
+        "title": "To",
+        "maxLength": 255
+      },
+      "dayNightTwilight": {
+        "type": "string",
+        "title": "Day / night / twilight",
+        "enum": [
+          "Day",
+          "Night",
+          "Twilight"
+        ]
+      },
+      "wind": {
+        "type": "string",
+        "title": "Wind",
+        "maxLength": 255
+      },
+      "ias": {
+        "type": "string",
+        "title": "IAS",
+        "maxLength": 255
+      },
+      "oat": {
+        "type": "number",
+        "title": "OAT (°C)"
+      },
+      "runwayUsed": {
+        "type": "string",
+        "title": "Runway used",
+        "maxLength": 255
+      },
+      "precipitation": {
+        "type": "string",
+        "title": "Precipitation",
+        "enum": [
+          "Rain",
+          "Snow",
+          "Hail",
+          "Ice",
+          "Sleet",
+          "Heavy",
+          "Moderate",
+          "Light"
+        ]
+      },
+      "icing": {
+        "type": "string",
+        "title": "Icing",
+        "enum": [
+          "Light",
+          "Moderate",
+          "Heavy"
+        ]
+      },
+      "turbulence": {
+        "type": "string",
+        "title": "Turbulence",
+        "enum": [
+          "Light",
+          "Moderate",
+          "Severe",
+          "Extreme"
+        ]
+      },
+      "runwayState": {
+        "type": "string",
+        "title": "State",
+        "enum": [
+          "Dry",
+          "Wet",
+          "Ice",
+          "Snow",
+          "Slush"
+        ]
+      },
+      "timeOfOccurrence": {
+        "type": "string",
+        "title": "Time of occurrence",
+        "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+      },
+      "visibility": {
+        "type": "string",
+        "title": "Visibility",
+        "maxLength": 255
+      },
+      "cloudType": {
+        "type": "string",
+        "title": "Cloud type",
+        "maxLength": 255
+      },
+      "locationOfAircraft": {
+        "type": "string",
+        "title": "Location of the aircraft",
+        "maxLength": 255
+      },
+      "durationOfFlight": {
+        "type": "string",
+        "title": "Duration of flight",
+        "maxLength": 255
+      },
+      "latitude": {
+        "type": "string",
+        "title": "Latitude",
+        "maxLength": 255
+      },
+      "longitude": {
+        "type": "string",
+        "title": "Longitude",
+        "maxLength": 255
+      },
+      "heightFt": {
+        "type": "number",
+        "title": "Height (ft)"
+      },
+      "cloudAmount": {
+        "type": "string",
+        "title": "Amount (8ths)",
+        "maxLength": 255
+      },
+      "crewKilledInjured": {
+        "type": "integer",
+        "title": "Number of crew killed and seriously injured",
+        "minimum": 0
+      },
+      "passengersKilledInjured": {
+        "type": "integer",
+        "title": "Number of passengers killed and seriously injured",
+        "minimum": 0
+      },
+      "description": {
+        "type": "string",
+        "title": "Narrative",
+        "maxLength": 5000
+      },
+      "ataChapter": {
+        "type": "string",
+        "title": "ATA chapter number",
+        "maxLength": 255
+      },
+      "aircraftSerialNo": {
+        "type": "string",
+        "title": "Serial number of aircraft",
+        "maxLength": 255
+      },
+      "engineTypeSeries": {
+        "type": "string",
+        "title": "Engine type and series",
+        "maxLength": 255
+      },
+      "componentPart": {
+        "type": "string",
+        "title": "Component / part",
+        "maxLength": 255
+      },
+      "componentLocation": {
+        "type": "string",
+        "title": "Location on the aircraft",
+        "maxLength": 255
+      },
+      "manualReference": {
+        "type": "string",
+        "title": "Manual reference",
+        "maxLength": 255
+      },
+      "partManufacturer": {
+        "type": "string",
+        "title": "Manufacturer",
+        "maxLength": 255
+      },
+      "partNo": {
+        "type": "string",
+        "title": "Part number",
+        "maxLength": 255
+      },
+      "partSerialNo": {
+        "type": "string",
+        "title": "Serial number",
+        "maxLength": 255
+      },
+      "maintenanceOrganisation": {
+        "type": "string",
+        "title": "Maintenance organisation",
+        "maxLength": 255
+      },
+      "mroContact": {
+        "type": "string",
+        "title": "Telephone number and email of the MRO",
+        "maxLength": 255
+      },
+      "maintenanceProgOC": {
+        "type": "string",
+        "title": "Maintenance programme: O.C.",
+        "maxLength": 255
+      },
+      "maintenanceProgCM": {
+        "type": "string",
+        "title": "Maintenance programme: C.M.",
+        "maxLength": 255
+      },
+      "maintenanceProgHT": {
+        "type": "string",
+        "title": "Maintenance programme: H.T.",
+        "maxLength": 255
+      },
+      "airworthinessInfo": {
+        "type": "string",
+        "title": "Is there published airworthiness information or control procedures relevant to the occurrence?",
+        "enum": [
+          "Yes",
+          "No"
+        ]
+      },
+      "sbAdDetails": {
+        "type": "string",
+        "title": "Details of SB, AD etc.",
+        "maxLength": 2000
+      },
+      "hoursSinceOverhaul": {
+        "type": "number",
+        "title": "Total hours since overhaul or repair",
+        "minimum": 0
+      },
+      "cyclesSinceOverhaul": {
+        "type": "integer",
+        "title": "Total cycles since overhaul or repair",
+        "minimum": 0
+      },
+      "landingsSinceOverhaul": {
+        "type": "integer",
+        "title": "Total landings since overhaul or repair",
+        "minimum": 0
+      },
+      "sinceInspection": {
+        "type": "string",
+        "title": "Total since inspection",
+        "maxLength": 255
+      },
+      "manufacturerAdvised": {
+        "type": "string",
+        "title": "Manufacturer advised",
+        "enum": [
+          "Yes",
+          "No"
+        ]
+      },
+      "complianceStatus": {
+        "type": "string",
+        "title": "Reference number and compliance status of aircraft or equipment",
+        "maxLength": 2000
+      },
+      "rectificationDetails": {
+        "type": "string",
+        "title": "Rectification details",
+        "maxLength": 2000
+      }
+    }
+  },
+  "uiSchema": {
+    "nationality": {
+      "ui:help": "Aircraft nationality"
+    },
+    "registration": {
+      "ui:placeholder": "VT-XXX"
+    },
+    "flightNo": {
+      "ui:placeholder": "e.g. ZZ 101"
+    },
+    "from": {
+      "ui:placeholder": "Airport"
+    },
+    "to": {
+      "ui:placeholder": "Airport"
+    },
+    "dayNightTwilight": {
+      "ui:widget": "radio",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "ias": {
+      "ui:help": "Indicated airspeed"
+    },
+    "oat": {
+      "ui:help": "Outside air temperature"
+    },
+    "runwayUsed": {
+      "ui:placeholder": "e.g. 27"
+    },
+    "timeOfOccurrence": {
+      "ui:placeholder": "HH:MM"
+    },
+    "latitude": {
+      "ui:placeholder": "DD°MM'SS\""
+    },
+    "longitude": {
+      "ui:placeholder": "DDD°MM'SS\""
+    },
+    "cloudAmount": {
+      "ui:help": "Cloud amount in eighths"
+    },
+    "description": {
+      "ui:widget": "textarea",
+      "ui:options": {
+        "rows": 8,
+        "fullWidth": true
+      }
+    },
+    "maintenanceProgOC": {
+      "ui:help": "On condition"
+    },
+    "maintenanceProgCM": {
+      "ui:help": "Condition monitoring"
+    },
+    "maintenanceProgHT": {
+      "ui:help": "Hard time"
+    },
+    "airworthinessInfo": {
+      "ui:widget": "radio",
+      "ui:options": {
+        "inline": true,
+        "fullWidth": true
+      }
+    },
+    "sbAdDetails": {
+      "ui:widget": "textarea",
+      "ui:options": {
+        "rows": 4,
+        "fullWidth": true
+      }
+    },
+    "manufacturerAdvised": {
+      "ui:widget": "radio",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "complianceStatus": {
+      "ui:widget": "textarea",
+      "ui:options": {
+        "rows": 4,
+        "fullWidth": true
+      }
+    },
+    "rectificationDetails": {
+      "ui:widget": "textarea",
+      "ui:options": {
+        "rows": 4,
+        "fullWidth": true
+      }
+    },
+    "ui:groups": [
+      {
+        "title": "Section A: Basic information",
+        "fields": [
+          "dateReceivedByDgca",
+          "dgcaOccurrenceNo",
+          "nationality",
+          "registration",
+          "operator",
+          "dateOfOccurrence"
+        ]
+      },
+      {
+        "title": "Section B: Flight and weather details 1",
+        "fields": [
+          "flightPhase",
+          "natureOfFlight",
+          "aircraftManufacturer",
+          "stateOfRegistry",
+          "aircraftModel",
+          "aircraftTypeSeries",
+          "flightNo",
+          "flightDate",
+          "from",
+          "to"
+        ]
+      },
+      {
+        "title": "Section C: Flight and weather details 2",
+        "fields": [
+          "dayNightTwilight",
+          "wind",
+          "ias",
+          "oat",
+          "runwayUsed",
+          "precipitation",
+          "icing",
+          "turbulence",
+          "runwayState",
+          "timeOfOccurrence",
+          "visibility",
+          "cloudType"
+        ]
+      },
+      {
+        "title": "Section D: Location and position",
+        "description": "Geographical position information to be provided in case of accident, serious incident, or landing at places other than airports.",
+        "fields": [
+          "locationOfAircraft",
+          "durationOfFlight",
+          "latitude",
+          "longitude",
+          "heightFt",
+          "cloudAmount"
+        ]
+      },
+      {
+        "title": "Section E: Crew and passengers",
+        "description": "Crew composition, qualification and nationality, and the number of passengers, are filled in automatically from CAE after you submit. You do not need to enter them. Enter 0 where nobody was killed or seriously injured.",
+        "fields": [
+          "crewKilledInjured",
+          "passengersKilledInjured"
+        ]
+      },
+      {
+        "title": "Section F: Narrative",
+        "description": "Include, where applicable: the position of the aircraft with reference to an easily defined geographical point (for an accident, serious incident, or landing away from an airport); any system-generated warnings; dangerous goods on board; and the physical characteristics of the site, including access difficulties or special requirements to reach it.",
+        "fields": [
+          "description"
+        ]
+      },
+      {
+        "title": "Section G: Engineering details",
+        "fields": [
+          "ataChapter",
+          "aircraftSerialNo",
+          "engineTypeSeries",
+          "componentPart",
+          "componentLocation",
+          "manualReference",
+          "partManufacturer",
+          "partNo",
+          "partSerialNo",
+          "maintenanceOrganisation",
+          "mroContact",
+          "maintenanceProgOC",
+          "maintenanceProgCM",
+          "maintenanceProgHT",
+          "airworthinessInfo",
+          "sbAdDetails",
+          "hoursSinceOverhaul",
+          "cyclesSinceOverhaul",
+          "landingsSinceOverhaul",
+          "sinceInspection",
+          "manufacturerAdvised",
+          "complianceStatus",
+          "rectificationDetails"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,416 @@
+{
+  "meta": {
+    "formId": "fatigue-report",
+    "code": "FAT-001",
+    "title": "Confidential Human Factor Incident Report: Fatigue",
+    "summary": "Report fatigue affecting your duty. Can be filed confidentially.",
+    "supportsConfidential": true,
+    "attachmentsRequired": false
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "confidential",
+      "dateOfOccurrence",
+      "timeRealisedFatigued",
+      "twoNightsFree",
+      "whereRealised",
+      "description",
+      "alertness",
+      "sleep24Start",
+      "sleep24End"
+    ],
+    "properties": {
+      "confidential": {
+        "type": "string",
+        "title": "Submit this report confidentially",
+        "enum": [
+          "No",
+          "Yes"
+        ],
+        "default": "No",
+        "description": "Your name, staff number, email and department are withheld from everyone who handles this report."
+      },
+      "dateOfOccurrence": {
+        "type": "string",
+        "format": "date",
+        "title": "Date of occurrence"
+      },
+      "timeRealisedFatigued": {
+        "type": "string",
+        "title": "Time you realised you were fatigued (local)",
+        "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+      },
+      "twoNightsFree": {
+        "type": "string",
+        "title": "Did you have 2 consecutive local nights free of duty?",
+        "enum": [
+          "Yes",
+          "No"
+        ]
+      },
+      "whereRealised": {
+        "type": "array",
+        "title": "Where were you when you realised you were fatigued?",
+        "items": {
+          "type": "string",
+          "enum": [
+            "During duty",
+            "Travelling home from work",
+            "Positioning",
+            "At hotel",
+            "Other"
+          ]
+        },
+        "uniqueItems": true,
+        "minItems": 1
+      },
+      "whereRealisedOther": {
+        "type": "string",
+        "title": "If other, please specify",
+        "maxLength": 255
+      },
+      "flightNo": {
+        "type": "string",
+        "title": "Flight number (if relevant)",
+        "maxLength": 10,
+        "pattern": "^[A-Za-z0-9]{2,3} ?[0-9]{1,4}[A-Za-z]?$"
+      },
+      "flightDate": {
+        "type": "string",
+        "format": "date",
+        "title": "Flight date (if relevant)"
+      },
+      "description": {
+        "type": "string",
+        "title": "Report details",
+        "maxLength": 5000
+      },
+      "alertness": {
+        "type": "string",
+        "title": "How alert did you feel when you realised you were fatigued?",
+        "enum": [
+          "1. Fully alert, wide awake",
+          "2. Very lively, somewhat responsive",
+          "3. OK, somewhat fresh",
+          "4. A little tired, less than fresh",
+          "5. Moderately tired, let down",
+          "6. Extremely tired, very difficult to concentrate",
+          "7. Completely exhausted"
+        ]
+      },
+      "physicalSigns": {
+        "type": "array",
+        "title": "Physical signs",
+        "items": {
+          "type": "string",
+          "enum": [
+            "No physical signs noted",
+            "Fidgeting",
+            "Rubbing eyes",
+            "Yawning",
+            "Frequent blinking",
+            "Staring blankly",
+            "Long blinks",
+            "Difficulty keeping eyes open",
+            "Head nodding",
+            "Other"
+          ]
+        },
+        "uniqueItems": true
+      },
+      "physicalSignsOther": {
+        "type": "string",
+        "title": "Other physical signs",
+        "maxLength": 2000
+      },
+      "cognitiveSigns": {
+        "type": "array",
+        "title": "Cognitive signs",
+        "items": {
+          "type": "string",
+          "enum": [
+            "No cognitive signs noted",
+            "Impaired attention",
+            "Impaired memory",
+            "Negative mood",
+            "Reduced communication",
+            "Impaired problem solving",
+            "Increased risk taking",
+            "Increased reaction time",
+            "Impaired situational awareness",
+            "Other"
+          ]
+        },
+        "uniqueItems": true
+      },
+      "cognitiveSignsOther": {
+        "type": "string",
+        "title": "Other cognitive signs",
+        "maxLength": 2000
+      },
+      "countermeasures": {
+        "type": "array",
+        "title": "Countermeasures used",
+        "items": {
+          "type": "string",
+          "enum": [
+            "Advised colleague of fatigue risk",
+            "Coordinated workload",
+            "Increased communication",
+            "Caffeine",
+            "Food and drink",
+            "In-flight rest",
+            "Other"
+          ]
+        },
+        "uniqueItems": true
+      },
+      "countermeasuresOther": {
+        "type": "string",
+        "title": "Other countermeasures",
+        "maxLength": 2000
+      },
+      "factors": {
+        "type": "array",
+        "title": "Contributing factors",
+        "items": {
+          "type": "string",
+          "enum": [
+            "Inadequate home rest",
+            "Inadequate hotel rest",
+            "Insufficient rostered rest time within single COP",
+            "Roster disruption",
+            "Early to late COP transition",
+            "Late to early COP transition",
+            "Early start time",
+            "Late finish time",
+            "Deep night flight",
+            "Long duty day",
+            "Delay(s)",
+            "Positioning",
+            "Return from annual leave",
+            "Health",
+            "Cumulative fatigue",
+            "Home issues",
+            "Don't know",
+            "Other"
+          ]
+        },
+        "uniqueItems": true
+      },
+      "factorsOther": {
+        "type": "string",
+        "title": "If not listed above",
+        "maxLength": 2000
+      },
+      "sleep24Start": {
+        "type": "string",
+        "title": "24 hours before commencement: sleep start",
+        "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+      },
+      "sleep24End": {
+        "type": "string",
+        "title": "24 hours before commencement: sleep end",
+        "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+      },
+      "sleep48Start": {
+        "type": "string",
+        "title": "48 to 24 hours before: sleep start",
+        "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+      },
+      "sleep48End": {
+        "type": "string",
+        "title": "48 to 24 hours before: sleep end",
+        "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+      },
+      "averageSleepHome": {
+        "type": "number",
+        "title": "Average sleep per night at home (hours)",
+        "minimum": 0,
+        "maximum": 24
+      },
+      "suggestion": {
+        "type": "string",
+        "title": "Suggestions to reduce fatigue (if any)",
+        "maxLength": 2000
+      }
+    }
+  },
+  "uiSchema": {
+    "confidential": {
+      "ui:widget": "radio",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "timeRealisedFatigued": {
+      "ui:placeholder": "HH:MM"
+    },
+    "twoNightsFree": {
+      "ui:widget": "radio",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "whereRealised": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "flightNo": {
+      "ui:placeholder": "e.g. ZZ 101"
+    },
+    "description": {
+      "ui:widget": "textarea",
+      "ui:options": {
+        "rows": 6,
+        "fullWidth": true
+      }
+    },
+    "alertness": {
+      "ui:widget": "radio",
+      "ui:options": {
+        "inline": false,
+        "fullWidth": true
+      }
+    },
+    "physicalSigns": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "physicalSignsOther": {
+      "ui:widget": "textarea",
+      "ui:options": {
+        "rows": 2,
+        "fullWidth": true
+      }
+    },
+    "cognitiveSigns": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "cognitiveSignsOther": {
+      "ui:widget": "textarea",
+      "ui:options": {
+        "rows": 2,
+        "fullWidth": true
+      }
+    },
+    "countermeasures": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "countermeasuresOther": {
+      "ui:widget": "textarea",
+      "ui:options": {
+        "rows": 2,
+        "fullWidth": true
+      }
+    },
+    "factors": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "factorsOther": {
+      "ui:widget": "textarea",
+      "ui:options": {
+        "rows": 4,
+        "fullWidth": true
+      }
+    },
+    "sleep24Start": {
+      "ui:placeholder": "HH:MM"
+    },
+    "sleep24End": {
+      "ui:placeholder": "HH:MM"
+    },
+    "sleep48Start": {
+      "ui:placeholder": "HH:MM"
+    },
+    "sleep48End": {
+      "ui:placeholder": "HH:MM"
+    },
+    "suggestion": {
+      "ui:widget": "textarea",
+      "ui:options": {
+        "rows": 4,
+        "fullWidth": true
+      }
+    },
+    "ui:groups": [
+      {
+        "title": "The occurrence",
+        "description": "The sector are filled in automatically from CAE after you submit. You do not need to enter them.",
+        "fields": [
+          "confidential",
+          "dateOfOccurrence",
+          "timeRealisedFatigued",
+          "twoNightsFree",
+          "whereRealised",
+          "whereRealisedOther",
+          "flightNo",
+          "flightDate"
+        ]
+      },
+      {
+        "title": "Report details",
+        "fields": [
+          "description"
+        ]
+      },
+      {
+        "title": "Alertness level",
+        "fields": [
+          "alertness"
+        ]
+      },
+      {
+        "title": "Signs of fatigue and countermeasures",
+        "description": "Tick all physical and cognitive signs of fatigue that were apparent in the 2 hours leading up to being fatigued, and any countermeasures used to offset them.",
+        "fields": [
+          "physicalSigns",
+          "physicalSignsOther",
+          "cognitiveSigns",
+          "cognitiveSignsOther",
+          "countermeasures",
+          "countermeasuresOther"
+        ]
+      },
+      {
+        "title": "Factors that contributed to the fatigue",
+        "description": "Tick all factors that you feel contributed to your fatigue, or to the fatigue-related concern in this report.",
+        "fields": [
+          "factors",
+          "factorsOther"
+        ]
+      },
+      {
+        "title": "Sleep history",
+        "description": "In the lead-up to feeling fatigued, when did you fall asleep and wake up (main rest)? Local time, 24-hour clock.",
+        "fields": [
+          "sleep24Start",
+          "sleep24End",
+          "sleep48Start",
+          "sleep48End",
+          "averageSleepHome"
+        ]
+      },
+      {
+        "title": "Suggestions",
+        "fields": [
+          "suggestion"
+        ]
+      }
+    ]
+  }
+}

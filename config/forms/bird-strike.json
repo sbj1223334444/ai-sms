@@ -1,0 +1,503 @@
+{
+  "meta": {
+    "formId": "bird-strike",
+    "code": "WLD-001",
+    "title": "Wildlife (Bird Strike) Report",
+    "summary": "Report a confirmed or suspected bird or animal strike.",
+    "supportsConfidential": false,
+    "attachmentsRequired": false
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "aircraftOperator",
+      "aircraftTypeSeries",
+      "aircraftRegistration",
+      "flightNo",
+      "dateOfOccurrence",
+      "timeOfOccurrence",
+      "aerodromeDeparture",
+      "aerodromeArrival",
+      "aerodromeOccurrence",
+      "phaseOfFlight",
+      "reportedByDate"
+    ],
+    "properties": {
+      "aircraftOperator": {
+        "type": "string",
+        "title": "Aircraft operator",
+        "maxLength": 255,
+        "default": "Air India"
+      },
+      "aircraftTypeSeries": {
+        "type": "string",
+        "title": "Aircraft type and series",
+        "maxLength": 255
+      },
+      "aircraftRegistration": {
+        "type": "string",
+        "title": "Aircraft registration",
+        "maxLength": 255
+      },
+      "flightNo": {
+        "type": "string",
+        "title": "Flight number",
+        "maxLength": 10,
+        "pattern": "^[A-Za-z0-9]{2,3} ?[0-9]{1,4}[A-Za-z]?$"
+      },
+      "engineMakeModel": {
+        "type": "string",
+        "title": "Engine make / model",
+        "maxLength": 255
+      },
+      "dateOfOccurrence": {
+        "type": "string",
+        "format": "date",
+        "title": "Date of occurrence"
+      },
+      "timeOfOccurrence": {
+        "type": "string",
+        "title": "Time of occurrence (local)",
+        "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+      },
+      "aerodromeDeparture": {
+        "type": "string",
+        "title": "Aerodrome of departure",
+        "maxLength": 255
+      },
+      "aerodromeArrival": {
+        "type": "string",
+        "title": "Aerodrome of intended arrival",
+        "maxLength": 255
+      },
+      "aerodromeOccurrence": {
+        "type": "string",
+        "title": "Aerodrome of occurrence",
+        "maxLength": 255
+      },
+      "runwayInUse": {
+        "type": "string",
+        "title": "Runway in use",
+        "maxLength": 255
+      },
+      "altitudeAgl": {
+        "type": "number",
+        "title": "Altitude (ft AGL)",
+        "minimum": 0
+      },
+      "speedIas": {
+        "type": "number",
+        "title": "Speed (IAS, kt)",
+        "minimum": 0
+      },
+      "positionEnRoute": {
+        "type": "string",
+        "title": "Position if en route",
+        "maxLength": 255
+      },
+      "atcInformed": {
+        "type": "string",
+        "title": "ATC informed",
+        "enum": [
+          "Yes",
+          "No"
+        ]
+      },
+      "phaseOfFlight": {
+        "type": "string",
+        "title": "Phase of flight",
+        "enum": [
+          "Taxi",
+          "Take-off run",
+          "Climb",
+          "En route",
+          "Descent",
+          "Approach",
+          "Landing roll",
+          "Ground checks"
+        ]
+      },
+      "precipitation": {
+        "type": "array",
+        "title": "Precipitation",
+        "items": {
+          "type": "string",
+          "enum": [
+            "None",
+            "Fog",
+            "Rain",
+            "Sleet",
+            "Snow"
+          ]
+        },
+        "uniqueItems": true
+      },
+      "skyCondition": {
+        "type": "array",
+        "title": "Sky condition",
+        "items": {
+          "type": "string",
+          "enum": [
+            "No cloud",
+            "Some cloud",
+            "Overcast"
+          ]
+        },
+        "uniqueItems": true
+      },
+      "wildlifeDescription": {
+        "type": "string",
+        "title": "Wildlife (bird / animal) description",
+        "maxLength": 255
+      },
+      "remainsSentForId": {
+        "type": "string",
+        "title": "Bird remains sent for identification",
+        "enum": [
+          "Yes",
+          "No"
+        ]
+      },
+      "numberOfBirds": {
+        "type": "string",
+        "title": "Number of birds / animals",
+        "enum": [
+          "1",
+          "2 to 10",
+          "11 to 100",
+          "More than 100"
+        ]
+      },
+      "pilotWarned": {
+        "type": "string",
+        "title": "Pilot warned of birds / animals",
+        "enum": [
+          "Yes",
+          "No"
+        ]
+      },
+      "birdSize": {
+        "type": "string",
+        "title": "Bird / animal size",
+        "enum": [
+          "Small",
+          "Medium",
+          "Large"
+        ]
+      },
+      "partsStruck": {
+        "type": "array",
+        "title": "Part(s) of aircraft struck",
+        "items": {
+          "type": "string",
+          "enum": [
+            "Radome",
+            "Windshield",
+            "Nose",
+            "Engine No. 1",
+            "Engine No. 2",
+            "Engine No. 3",
+            "Engine No. 4",
+            "Wing / rotor",
+            "Propeller",
+            "Fuselage",
+            "Landing gear",
+            "Tail",
+            "Lights",
+            "Others"
+          ]
+        },
+        "uniqueItems": true
+      },
+      "partsDamaged": {
+        "type": "array",
+        "title": "Part(s) of aircraft damaged",
+        "items": {
+          "type": "string",
+          "enum": [
+            "Radome",
+            "Windshield",
+            "Nose",
+            "Engine No. 1",
+            "Engine No. 2",
+            "Engine No. 3",
+            "Engine No. 4",
+            "Wing / rotor",
+            "Propeller",
+            "Fuselage",
+            "Landing gear",
+            "Tail",
+            "Lights",
+            "Others"
+          ]
+        },
+        "uniqueItems": true
+      },
+      "effectOnFlight": {
+        "type": "array",
+        "title": "Effect on flight",
+        "items": {
+          "type": "string",
+          "enum": [
+            "None",
+            "Aborted take-off",
+            "Precautionary landing",
+            "Engine shutdown",
+            "Other"
+          ]
+        },
+        "uniqueItems": true
+      },
+      "otherReportRaised": {
+        "type": "array",
+        "title": "Other report raised",
+        "items": {
+          "type": "string",
+          "enum": [
+            "Flight Safety Incident Report",
+            "Other"
+          ]
+        },
+        "uniqueItems": true
+      },
+      "remarks": {
+        "type": "string",
+        "title": "Remarks and other relevant information",
+        "maxLength": 5000
+      },
+      "reportedByStation": {
+        "type": "string",
+        "title": "Station",
+        "maxLength": 255
+      },
+      "reportedByContact": {
+        "type": "string",
+        "title": "Contact number",
+        "maxLength": 255,
+        "pattern": "^[0-9]{10}$"
+      },
+      "reportedByDate": {
+        "type": "string",
+        "format": "date",
+        "title": "Date"
+      },
+      "aircraftTimeOutOfService": {
+        "type": "number",
+        "title": "Aircraft time out of service (hours)",
+        "minimum": 0
+      },
+      "estimatedRepairCost": {
+        "type": "number",
+        "title": "Estimated cost of repairs or replacement (₹)",
+        "minimum": 0
+      },
+      "estimatedOtherCost": {
+        "type": "number",
+        "title": "Estimated other cost (₹)",
+        "minimum": 0
+      }
+    }
+  },
+  "uiSchema": {
+    "aircraftOperator": {
+      "ui:help": "ICAO code for scheduled airlines, or the operator's full name."
+    },
+    "aircraftTypeSeries": {
+      "ui:placeholder": "e.g. A-320, B737-400"
+    },
+    "aircraftRegistration": {
+      "ui:help": "Full registration: nationality and registration mark.",
+      "ui:placeholder": "VT-XXX"
+    },
+    "flightNo": {
+      "ui:help": "ICAO or IATA code.",
+      "ui:placeholder": "e.g. ZZ 101"
+    },
+    "engineMakeModel": {
+      "ui:placeholder": "e.g. CFM 56, IAE 2527"
+    },
+    "dateOfOccurrence": {
+      "ui:help": "Local date in the country of occurrence, not GMT."
+    },
+    "timeOfOccurrence": {
+      "ui:help": "24-hour clock.",
+      "ui:placeholder": "HH:MM"
+    },
+    "aerodromeDeparture": {
+      "ui:placeholder": "e.g. VIDP or Delhi"
+    },
+    "aerodromeArrival": {
+      "ui:placeholder": "e.g. VABB or Mumbai"
+    },
+    "aerodromeOccurrence": {
+      "ui:placeholder": "ICAO code or airport name"
+    },
+    "runwayInUse": {
+      "ui:placeholder": "e.g. 27"
+    },
+    "altitudeAgl": {
+      "ui:help": "At the time of the strike. If you use MSL, say so in the remarks."
+    },
+    "positionEnRoute": {
+      "ui:help": "Nearest airport and state."
+    },
+    "atcInformed": {
+      "ui:widget": "radio",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "phaseOfFlight": {
+      "ui:help": "Be precise, for example take-off run or landing roll."
+    },
+    "precipitation": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      },
+      "ui:help": "Tick all that apply."
+    },
+    "skyCondition": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "wildlifeDescription": {
+      "ui:placeholder": "e.g. Pariah kite, pigeon, dog, deer, or unknown"
+    },
+    "remainsSentForId": {
+      "ui:widget": "radio",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "pilotWarned": {
+      "ui:widget": "radio",
+      "ui:options": {
+        "inline": true
+      },
+      "ui:help": "Did ATC or ATIS warn of bird activity?"
+    },
+    "birdSize": {
+      "ui:widget": "radio",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "partsStruck": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "partsDamaged": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      },
+      "ui:help": "If a part was damaged but not struck, tick it here only and explain in the remarks."
+    },
+    "effectOnFlight": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "otherReportRaised": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "remarks": {
+      "ui:widget": "textarea",
+      "ui:options": {
+        "rows": 5,
+        "fullWidth": true
+      },
+      "ui:help": "Extent of damage, injuries, effect on flight, any PAN PAN or MAYDAY declaration."
+    },
+    "reportedByContact": {
+      "ui:placeholder": "10-digit number"
+    },
+    "reportedByDate": {
+      "ui:help": "The date you are filling in this form."
+    },
+    "estimatedOtherCost": {
+      "ui:help": "Passenger transfers, fuel, hotels, food, refunds."
+    },
+    "ui:groups": [
+      {
+        "title": "Aircraft and flight",
+        "fields": [
+          "aircraftOperator",
+          "aircraftTypeSeries",
+          "aircraftRegistration",
+          "flightNo",
+          "engineMakeModel"
+        ]
+      },
+      {
+        "title": "When and where",
+        "fields": [
+          "dateOfOccurrence",
+          "timeOfOccurrence",
+          "aerodromeDeparture",
+          "aerodromeArrival",
+          "aerodromeOccurrence",
+          "runwayInUse",
+          "altitudeAgl",
+          "speedIas",
+          "positionEnRoute",
+          "atcInformed",
+          "phaseOfFlight"
+        ]
+      },
+      {
+        "title": "Conditions",
+        "fields": [
+          "precipitation",
+          "skyCondition"
+        ]
+      },
+      {
+        "title": "Wildlife",
+        "fields": [
+          "wildlifeDescription",
+          "remainsSentForId",
+          "numberOfBirds",
+          "pilotWarned",
+          "birdSize"
+        ]
+      },
+      {
+        "title": "Damage and effect on flight",
+        "fields": [
+          "partsStruck",
+          "partsDamaged",
+          "effectOnFlight",
+          "otherReportRaised",
+          "remarks"
+        ]
+      },
+      {
+        "title": "Reported by",
+        "fields": [
+          "reportedByStation",
+          "reportedByContact",
+          "reportedByDate"
+        ]
+      },
+      {
+        "title": "Financial loss",
+        "description": "These may not be known yet. They can be sent to DGCA later.",
+        "fields": [
+          "aircraftTimeOutOfService",
+          "estimatedRepairCost",
+          "estimatedOtherCost"
+        ]
+      }
+    ]
+  }
+}

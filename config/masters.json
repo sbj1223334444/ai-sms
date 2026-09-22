@@ -1,0 +1,179 @@
+{
+  "stations": [
+    "DEL",
+    "BOM",
+    "BLR",
+    "MAA",
+    "CCU",
+    "HYD",
+    "AMD",
+    "COK",
+    "GOI",
+    "PNQ",
+    "LHR",
+    "JFK",
+    "SIN",
+    "DXB",
+    "SYD"
+  ],
+  "phaseOfFlight": [
+    "Parked",
+    "Taxiing",
+    "Take-off",
+    "Initial climb",
+    "Climb",
+    "Cruise",
+    "Descent",
+    "Holding",
+    "Approach",
+    "Landing",
+    "Circuit"
+  ],
+  "weather": [
+    "Squall",
+    "Frontal activity",
+    "High temperature",
+    "Thunderstorm",
+    "Down draft/Up draft",
+    "Icing",
+    "Windshear",
+    "Gusting wind",
+    "High density altitude",
+    "None",
+    "Unknown",
+    "Others"
+  ],
+  "concernedAreas": [
+    "Flight Operations",
+    "Engineering",
+    "Ground Handling",
+    "Cabin Operations",
+    "Airport & Station Operations",
+    "Cargo",
+    "Security",
+    "Occupational Health & Safety"
+  ],
+  "departments": [
+    "Flight Operations",
+    "Cabin Crew",
+    "Engineering",
+    "Ground Handling",
+    "Cargo",
+    "AOD",
+    "Security",
+    "Corporate Safety"
+  ],
+  "effectivenessPeriods": [
+    "1 month",
+    "3 months",
+    "6 months",
+    "12 months",
+    "24 months",
+    "After the flight",
+    "N/A"
+  ],
+  "note": "Effectiveness period list follows BRD 3.7. SRA review periods follow BRD 7 field 21. Hazard and control lists seed the pickers - both accept a new entry.",
+  "functionalAreas": {
+    "Flight Operations": [
+      "Flight crew operations",
+      "Flight dispatch",
+      "Training and checking",
+      "Flight data monitoring",
+      "Route and performance"
+    ],
+    "Engineering": [
+      "Line maintenance",
+      "Base maintenance",
+      "Continuing airworthiness",
+      "Stores and spares",
+      "Maintenance planning"
+    ],
+    "Ground Handling": [
+      "Ramp handling",
+      "Loading and unloading",
+      "Pushback and towing",
+      "De-icing",
+      "Ground support equipment"
+    ],
+    "Cabin Operations": [
+      "Cabin crew operations",
+      "Cabin safety equipment",
+      "Catering",
+      "Cabin training"
+    ],
+    "Airport & Station Operations": [
+      "Terminal operations",
+      "Apron safety",
+      "Passenger handling",
+      "Station management"
+    ],
+    "Cargo": [
+      "Cargo acceptance",
+      "Dangerous goods",
+      "Load planning",
+      "Cargo warehouse"
+    ],
+    "Security": [
+      "Access control",
+      "Screening",
+      "Cabin and hold security",
+      "Threat response"
+    ],
+    "Occupational Health & Safety": [
+      "Workplace safety",
+      "Fatigue management",
+      "Health surveillance",
+      "Environmental"
+    ]
+  },
+  "hazardRegister": [
+    "Runway excursion",
+    "Runway incursion",
+    "Mid-air collision / loss of separation",
+    "Controlled flight into terrain",
+    "Unstable approach",
+    "Bird or wildlife strike",
+    "Laser illumination",
+    "GPS / GNSS interference",
+    "Loss of control in flight",
+    "Ground collision / ramp damage",
+    "Turbulence injury",
+    "Fire, smoke or fumes",
+    "Dangerous goods release",
+    "Unruly or disruptive passenger",
+    "Fatigue",
+    "Load sheet or weight and balance error",
+    "Technical defect / system failure",
+    "Adverse weather",
+    "Fuel contamination or starvation",
+    "Communication breakdown"
+  ],
+  "controlLibrary": [
+    "Standard operating procedure",
+    "Crew briefing",
+    "Recurrent training",
+    "Checklist amendment",
+    "Engineering modification",
+    "Maintenance inspection",
+    "Supervision or spot check",
+    "Route or airfield restriction",
+    "Equipment replacement",
+    "Safety notice to crew",
+    "Roster or duty limitation",
+    "Third-party audit",
+    "Signage or marking",
+    "Monitoring programme"
+  ],
+  "sraStatuses": [
+    "Open",
+    "In Progress",
+    "Closed"
+  ],
+  "sraReviewPeriods": [
+    "3 Months",
+    "6 Months",
+    "12 Months",
+    "After the Flight",
+    "N/A"
+  ]
+}

@@ -1,0 +1,332 @@
+{
+  "meta": {
+    "formId": "dg-occurrence",
+    "code": "DG-001",
+    "title": "Dangerous Goods Occurrence Report",
+    "summary": "Undeclared, mis-declared, damaged or leaking dangerous goods.",
+    "supportsConfidential": false,
+    "attachmentsRequired": true
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "occurrenceType",
+      "operator",
+      "dateOfOccurrence",
+      "localTimeOfOccurrence",
+      "flightDate",
+      "flightNo",
+      "departureAirport",
+      "destinationAirport",
+      "aircraftType",
+      "aircraftRegistration",
+      "locationOfOccurrence",
+      "description",
+      "properShippingName",
+      "shipperDetails",
+      "telephone"
+    ],
+    "properties": {
+      "occurrenceType": {
+        "type": "array",
+        "title": "Mark the type of occurrence",
+        "items": {
+          "type": "string",
+          "enum": [
+            "Accident",
+            "Incident",
+            "Other occurrence"
+          ]
+        },
+        "uniqueItems": true,
+        "minItems": 1
+      },
+      "operator": {
+        "type": "string",
+        "title": "Operator",
+        "maxLength": 255,
+        "default": "Air India"
+      },
+      "dateOfOccurrence": {
+        "type": "string",
+        "format": "date",
+        "title": "Date of occurrence"
+      },
+      "localTimeOfOccurrence": {
+        "type": "string",
+        "title": "Local time of occurrence",
+        "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+      },
+      "flightDate": {
+        "type": "string",
+        "format": "date",
+        "title": "Flight date"
+      },
+      "flightNo": {
+        "type": "string",
+        "title": "Flight number",
+        "maxLength": 10,
+        "pattern": "^[A-Za-z0-9]{2,3} ?[0-9]{1,4}[A-Za-z]?$"
+      },
+      "departureAirport": {
+        "type": "string",
+        "title": "Departure airport",
+        "maxLength": 255
+      },
+      "destinationAirport": {
+        "type": "string",
+        "title": "Destination airport",
+        "maxLength": 255
+      },
+      "aircraftType": {
+        "type": "string",
+        "title": "Aircraft type",
+        "enum": [
+          "A319",
+          "A320ceo",
+          "A320neo",
+          "A321ceo",
+          "A321neo",
+          "A350-900",
+          "A350-1000",
+          "B737-8",
+          "B737-800",
+          "B777-200LR",
+          "B777-300ER",
+          "B787-8",
+          "B787-9",
+          "Other"
+        ]
+      },
+      "aircraftRegistration": {
+        "type": "string",
+        "title": "Aircraft registration",
+        "maxLength": 255
+      },
+      "locationOfOccurrence": {
+        "type": "string",
+        "title": "Location of occurrence",
+        "maxLength": 255
+      },
+      "originOfGoods": {
+        "type": "string",
+        "title": "Origin of the goods",
+        "maxLength": 255
+      },
+      "description": {
+        "type": "string",
+        "title": "Description of the occurrence",
+        "minLength": 100,
+        "maxLength": 5000
+      },
+      "properShippingName": {
+        "type": "string",
+        "title": "Proper shipping name",
+        "maxLength": 255
+      },
+      "unIdNo": {
+        "type": "string",
+        "title": "UN / ID number",
+        "maxLength": 255
+      },
+      "classDivision": {
+        "type": "string",
+        "title": "Class / division",
+        "maxLength": 255
+      },
+      "subsidiaryHazards": {
+        "type": "string",
+        "title": "Subsidiary hazard(s)",
+        "maxLength": 255
+      },
+      "packingGroup": {
+        "type": "string",
+        "title": "Packing group",
+        "maxLength": 255
+      },
+      "category7": {
+        "type": "string",
+        "title": "Category (Class 7 only)",
+        "maxLength": 255
+      },
+      "packagingType": {
+        "type": "string",
+        "title": "Type of packaging",
+        "maxLength": 255
+      },
+      "packagingMarking": {
+        "type": "string",
+        "title": "Packaging specification marking",
+        "maxLength": 255
+      },
+      "numberOfPackages": {
+        "type": "integer",
+        "title": "Number of packages",
+        "minimum": 0
+      },
+      "quantity": {
+        "type": "string",
+        "title": "Quantity (or transport index, if applicable)",
+        "maxLength": 255
+      },
+      "awbReference": {
+        "type": "string",
+        "title": "Reference number of air waybill",
+        "maxLength": 255
+      },
+      "pouchTagTicketReference": {
+        "type": "string",
+        "title": "Reference number of courier pouch, baggage tag or passenger ticket",
+        "maxLength": 255
+      },
+      "shipperDetails": {
+        "type": "string",
+        "title": "Name and address of shipper, agent or passenger",
+        "maxLength": 2000
+      },
+      "otherInformation": {
+        "type": "string",
+        "title": "Other relevant information",
+        "maxLength": 2000
+      },
+      "telephone": {
+        "type": "string",
+        "title": "Telephone number",
+        "maxLength": 255,
+        "pattern": "^[0-9]{10}$"
+      },
+      "reporterRef": {
+        "type": "string",
+        "title": "Reporter reference",
+        "maxLength": 255
+      },
+      "address": {
+        "type": "string",
+        "title": "Address",
+        "maxLength": 2000
+      }
+    }
+  },
+  "uiSchema": {
+    "occurrenceType": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "localTimeOfOccurrence": {
+      "ui:placeholder": "HH:MM"
+    },
+    "flightNo": {
+      "ui:placeholder": "e.g. ZZ 101"
+    },
+    "aircraftRegistration": {
+      "ui:placeholder": "VT-XXX"
+    },
+    "description": {
+      "ui:widget": "textarea",
+      "ui:options": {
+        "rows": 6,
+        "fullWidth": true
+      },
+      "ui:help": "Include details of any injury or damage. At least 100 characters."
+    },
+    "properShippingName": {
+      "ui:help": "Including the technical name."
+    },
+    "unIdNo": {
+      "ui:help": "When known."
+    },
+    "classDivision": {
+      "ui:help": "When known."
+    },
+    "shipperDetails": {
+      "ui:widget": "textarea",
+      "ui:options": {
+        "rows": 4,
+        "fullWidth": true
+      }
+    },
+    "otherInformation": {
+      "ui:widget": "textarea",
+      "ui:options": {
+        "rows": 4,
+        "fullWidth": true
+      },
+      "ui:help": "Including the suspected cause and any action taken."
+    },
+    "telephone": {
+      "ui:placeholder": "10-digit number"
+    },
+    "address": {
+      "ui:widget": "textarea",
+      "ui:options": {
+        "rows": 3,
+        "fullWidth": true
+      }
+    },
+    "ui:groups": [
+      {
+        "title": "Type of occurrence",
+        "fields": [
+          "occurrenceType"
+        ]
+      },
+      {
+        "title": "Basic information",
+        "fields": [
+          "operator",
+          "dateOfOccurrence",
+          "localTimeOfOccurrence",
+          "flightDate",
+          "flightNo",
+          "departureAirport",
+          "destinationAirport",
+          "aircraftType",
+          "aircraftRegistration",
+          "locationOfOccurrence",
+          "originOfGoods"
+        ]
+      },
+      {
+        "title": "Description",
+        "fields": [
+          "description"
+        ]
+      },
+      {
+        "title": "Dangerous goods details",
+        "fields": [
+          "properShippingName",
+          "unIdNo",
+          "classDivision",
+          "subsidiaryHazards",
+          "packingGroup",
+          "category7",
+          "packagingType",
+          "packagingMarking",
+          "numberOfPackages",
+          "quantity",
+          "awbReference",
+          "pouchTagTicketReference",
+          "shipperDetails"
+        ]
+      },
+      {
+        "title": "Additional information",
+        "fields": [
+          "otherInformation"
+        ]
+      },
+      {
+        "title": "Reporter information",
+        "description": "Company / department code, email, date and signature are taken from your account.",
+        "fields": [
+          "telephone",
+          "reporterRef",
+          "address"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "note": "BRD section 9. Only rendered for reports accepted as Investigation + SRA.",
+  "sections": [
+    { "key": "synopsis", "no": "1", "label": "Synopsis", "required": true },
+    { "key": "factual", "no": "2", "label": "Factual Information", "children": [
+      { "key": "historyOfFlight", "no": "2.1", "label": "History of the flight" },
+      { "key": "injuries", "no": "2.2", "label": "Injuries to persons" },
+      { "key": "damageAircraft", "no": "2.3", "label": "Damage to aircraft" },
+      { "key": "otherDamage", "no": "2.4", "label": "Other damage" },
+      { "key": "personnel", "no": "2.5", "label": "Personnel information" },
+      { "key": "aircraftInfo", "no": "2.6", "label": "Aircraft information" },
+      { "key": "meteorological", "no": "2.7", "label": "Meteorological information" },
+      { "key": "navAids", "no": "2.8", "label": "Aids to navigation" },
+      { "key": "communication", "no": "2.9", "label": "Communication" },
+      { "key": "aerodrome", "no": "2.10", "label": "Aerodrome information" },
+      { "key": "flightRecorders", "no": "2.11", "label": "Flight recorders" },
+      { "key": "wreckage", "no": "2.12", "label": "Wreckage and impact information" },
+      { "key": "fire", "no": "2.13", "label": "Fire" },
+      { "key": "survival", "no": "2.14", "label": "Survival aspects" },
+      { "key": "tests", "no": "2.15", "label": "Tests and research" },
+      { "key": "additional", "no": "2.16", "label": "Additional information" },
+      { "key": "newTechniques", "no": "2.17", "label": "New investigation techniques" }
+    ]},
+    { "key": "analysis", "no": "3", "label": "Analysis", "required": true },
+    { "key": "recommendations", "no": "5", "label": "Safety recommendations", "required": true }
+  ],
+  "findingStates": ["Present & Effective", "Present & Ineffective", "Present & Not tested", "Tested & ineffective"],
+  "maxFindings": 15,
+  "maxActions": 15
+}

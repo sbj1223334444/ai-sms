@@ -1,0 +1,22 @@
+<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Air India SMS Logo Placeholder -->
+  <!-- Shield with AI branding -->
+  <defs>
+    <linearGradient id="aiGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E30A17;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#B00812;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Shield background -->
+  <path d="M50 10 L20 25 L20 50 Q20 80 50 90 Q80 80 80 50 L80 25 Z"
+        fill="url(#aiGradient)" stroke="#0B1B34" stroke-width="2"/>
+
+  <!-- AI text -->
+  <text x="50" y="58" font-family="Arial, sans-serif" font-size="32"
+        font-weight="bold" fill="white" text-anchor="middle">AI</text>
+
+  <!-- SMS text below -->
+  <text x="50" y="75" font-family="Arial, sans-serif" font-size="10"
+        fill="white" text-anchor="middle" opacity="0.9">SMS</text>
+</svg>

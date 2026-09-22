@@ -1,0 +1,370 @@
+{
+  "meta": {
+    "formId": "ra-report",
+    "code": "RA-001",
+    "title": "Pilot / Observer RA Report",
+    "summary": "TCAS resolution advisory, with the preceding traffic advisory.",
+    "supportsConfidential": false,
+    "attachmentsRequired": false
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "aircraftOperator",
+      "pilotOrObserver",
+      "aircraftId",
+      "aircraftType",
+      "aerodromeDeparture",
+      "destination",
+      "dateTimeOfEvent",
+      "ownAltitude",
+      "ownPosition",
+      "phaseOfFlight",
+      "taIssued",
+      "intruderBearing",
+      "intruderRange",
+      "relativeAltitude",
+      "raType",
+      "followedRa",
+      "raNecessary",
+      "flightConditions"
+    ],
+    "properties": {
+      "aircraftOperator": {
+        "type": "string",
+        "title": "Aircraft operator",
+        "maxLength": 255,
+        "default": "Air India"
+      },
+      "pilotOrObserver": {
+        "type": "string",
+        "title": "Pilot / observer",
+        "enum": [
+          "Pilot",
+          "Observer"
+        ]
+      },
+      "telephone": {
+        "type": "string",
+        "title": "Telephone",
+        "maxLength": 255,
+        "pattern": "^[0-9]{10}$"
+      },
+      "ssrCode": {
+        "type": "string",
+        "title": "SSR code",
+        "maxLength": 255
+      },
+      "aircraftId": {
+        "type": "string",
+        "title": "Aircraft ID",
+        "maxLength": 255
+      },
+      "aircraftType": {
+        "type": "string",
+        "title": "Aircraft type",
+        "enum": [
+          "A319",
+          "A320ceo",
+          "A320neo",
+          "A321ceo",
+          "A321neo",
+          "A350-900",
+          "A350-1000",
+          "B737-8",
+          "B737-800",
+          "B777-200LR",
+          "B777-300ER",
+          "B787-8",
+          "B787-9",
+          "Other"
+        ]
+      },
+      "aerodromeDeparture": {
+        "type": "string",
+        "title": "Aerodrome of departure",
+        "maxLength": 255
+      },
+      "destination": {
+        "type": "string",
+        "title": "Destination",
+        "maxLength": 255
+      },
+      "dateTimeOfEvent": {
+        "type": "string",
+        "format": "date-time",
+        "title": "Date and time of event (UTC)"
+      },
+      "ownAltitude": {
+        "type": "number",
+        "title": "Own aircraft altitude (ft)"
+      },
+      "ownPosition": {
+        "type": "string",
+        "title": "Own aircraft position",
+        "maxLength": 255
+      },
+      "phaseOfFlight": {
+        "type": "array",
+        "title": "Phase of flight",
+        "items": {
+          "type": "string",
+          "enum": [
+            "Take-off",
+            "Climb",
+            "Cruise",
+            "Descent",
+            "Hold",
+            "Final",
+            "Missed approach"
+          ]
+        },
+        "uniqueItems": true,
+        "minItems": 1
+      },
+      "clearance": {
+        "type": "string",
+        "title": "Clearance (ft / FL)",
+        "maxLength": 255
+      },
+      "taIssued": {
+        "type": "string",
+        "title": "TA issued?",
+        "enum": [
+          "Yes",
+          "No"
+        ]
+      },
+      "visualContactPriorRa": {
+        "type": "string",
+        "title": "Visual contact prior to RA?",
+        "enum": [
+          "Yes",
+          "No"
+        ]
+      },
+      "atsAdvisory": {
+        "type": "string",
+        "title": "ATS advisory?",
+        "enum": [
+          "Yes",
+          "No"
+        ]
+      },
+      "intruderBearing": {
+        "type": "integer",
+        "title": "Intruder bearing (o'clock)",
+        "minimum": 1,
+        "maximum": 12
+      },
+      "intruderRange": {
+        "type": "number",
+        "title": "Intruder range (NM)",
+        "minimum": 0
+      },
+      "relativeAltitude": {
+        "type": "number",
+        "title": "Relative altitude (ft)"
+      },
+      "raType": {
+        "type": "string",
+        "title": "Type of RA",
+        "maxLength": 255
+      },
+      "followedRa": {
+        "type": "string",
+        "title": "Did you follow the RA?",
+        "enum": [
+          "Yes",
+          "No"
+        ]
+      },
+      "atsConflict": {
+        "type": "string",
+        "title": "If applicable, did the ATS instruction conflict with the RA?",
+        "enum": [
+          "Yes",
+          "No"
+        ]
+      },
+      "raNecessary": {
+        "type": "string",
+        "title": "Was the RA necessary?",
+        "enum": [
+          "Yes",
+          "No"
+        ]
+      },
+      "flightConditions": {
+        "type": "array",
+        "title": "Flight conditions",
+        "items": {
+          "type": "string",
+          "enum": [
+            "IMC",
+            "VMC",
+            "Day",
+            "Night"
+          ]
+        },
+        "uniqueItems": true,
+        "minItems": 1
+      },
+      "visibilityNm": {
+        "type": "number",
+        "title": "Visibility (NM)",
+        "minimum": 0
+      },
+      "atsProvided": {
+        "type": "string",
+        "title": "Air traffic service provided",
+        "enum": [
+          "En-route control",
+          "Aerodrome / approach control",
+          "Flight information"
+        ]
+      },
+      "description": {
+        "type": "string",
+        "title": "Remarks",
+        "maxLength": 5000
+      }
+    }
+  },
+  "uiSchema": {
+    "pilotOrObserver": {
+      "ui:widget": "radio",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "telephone": {
+      "ui:placeholder": "10-digit number"
+    },
+    "ownPosition": {
+      "ui:help": "FIR / VOR / radial / DME, or latitude and longitude.",
+      "ui:options": {
+        "fullWidth": true
+      }
+    },
+    "phaseOfFlight": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "taIssued": {
+      "ui:widget": "radio",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "visualContactPriorRa": {
+      "ui:widget": "radio",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "atsAdvisory": {
+      "ui:widget": "radio",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "raType": {
+      "ui:placeholder": "e.g. Climb, Crossing climb, VSL 500"
+    },
+    "followedRa": {
+      "ui:widget": "radio",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "atsConflict": {
+      "ui:widget": "radio",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "raNecessary": {
+      "ui:widget": "radio",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "flightConditions": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "description": {
+      "ui:widget": "textarea",
+      "ui:options": {
+        "rows": 4,
+        "fullWidth": true
+      }
+    },
+    "ui:groups": [
+      {
+        "title": "Basic information",
+        "description": "Your name is taken from your account.",
+        "fields": [
+          "aircraftOperator",
+          "pilotOrObserver",
+          "telephone",
+          "ssrCode"
+        ]
+      },
+      {
+        "title": "Aircraft and flight details",
+        "fields": [
+          "aircraftId",
+          "aircraftType",
+          "aerodromeDeparture",
+          "destination",
+          "dateTimeOfEvent",
+          "ownAltitude",
+          "ownPosition"
+        ]
+      },
+      {
+        "title": "Phase of flight",
+        "fields": [
+          "phaseOfFlight",
+          "clearance"
+        ]
+      },
+      {
+        "title": "TA information",
+        "fields": [
+          "taIssued",
+          "visualContactPriorRa",
+          "atsAdvisory"
+        ]
+      },
+      {
+        "title": "RA information",
+        "fields": [
+          "intruderBearing",
+          "intruderRange",
+          "relativeAltitude",
+          "raType",
+          "followedRa",
+          "atsConflict",
+          "raNecessary"
+        ]
+      },
+      {
+        "title": "General information",
+        "description": "The pilot in command signs the printed report.",
+        "fields": [
+          "flightConditions",
+          "visibilityNm",
+          "atsProvided",
+          "description"
+        ]
+      }
+    ]
+  }
+}

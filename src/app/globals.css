@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: light; }
+
+@layer base {
+  body {
+    @apply bg-surface text-ink antialiased;
+    font-feature-settings: "cv11" 1, "ss01" 1, "tnum" 1;
+  }
+}
+
+/* Component classes live in the components layer so utilities (pl-10, pr-9, mt-4) can override them. */
+@layer components {
+  /* Identifiers - report IDs, hazard IDs, flight numbers - are data, so they get a mono face. */
+  .id { @apply font-mono text-[0.8125rem] tracking-tight; }
+
+  /* ---------------- Surfaces ---------------- */
+  .card { @apply rounded-2xl border border-line bg-white shadow-card; }
+  .label { @apply text-[0.8125rem] font-medium text-slate1; }
+  .eyebrow { @apply text-[0.6875rem] font-semibold uppercase tracking-[0.08em] text-slate1; }
+  .chip { @apply inline-flex items-center gap-1 rounded-full border border-line bg-white px-2.5 py-0.5 text-[0.75rem] font-medium text-slate1; }
+
+  /* ---------------- Controls ---------------- */
+  .input {
+    @apply h-10 w-full rounded-xl border border-line bg-white px-3.5 text-sm text-ink shadow-xs transition
+           placeholder:text-slate-400
+           hover:border-slate-300
+           focus:border-chart focus:outline-none focus:ring-4 focus:ring-chart/10
+           disabled:cursor-not-allowed disabled:bg-surface disabled:text-slate1;
+  }
+  textarea.input { @apply h-auto py-2.5 leading-relaxed; }
+  select.input {
+    @apply appearance-none pr-9;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%2364748B' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1.1rem;
+  }
+
+  .btn {
+    @apply inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded-xl px-4 text-sm font-semibold transition
+           focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-chart/20;
+  }
+  .btn-primary { @apply btn bg-chart text-white shadow-sm hover:bg-chartdark disabled:cursor-not-allowed disabled:bg-slate-300 disabled:shadow-none; }
+  .btn-ghost { @apply btn border border-line bg-white text-ink shadow-xs hover:border-slate-300 hover:bg-surface disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-white; }
+  .btn-danger { @apply btn border border-risk-red/25 bg-white text-risk-red hover:bg-risk-red/5; }
+  .btn-sm { @apply h-8 rounded-lg px-3 text-[0.8125rem]; }
+
+  /* ---------------- Tables ---------------- */
+  .table { @apply w-full text-sm; }
+  .table thead th { @apply border-b border-line bg-surface/70 px-4 py-3 text-left text-[0.75rem] font-semibold uppercase tracking-wide text-slate1; }
+  .table tbody td { @apply border-b border-line px-4 py-3.5 align-middle; }
+  .table tbody tr:last-child td { @apply border-0; }
+  .table tbody tr { @apply transition-colors hover:bg-chartsoft/40; }
+
+  /* ---------------- Report forms ---------------- */
+  .form-section { @apply rounded-2xl border border-line bg-white p-5 shadow-card md:p-6; }
+  .form-section-index { @apply grid h-7 w-7 shrink-0 place-items-center rounded-full bg-chartsoft text-xs font-bold text-chart; }
+  .field-label { @apply mb-1.5 block text-sm font-medium text-ink; }
+  .field-hint { @apply text-xs leading-relaxed text-slate1; }
+  .field-error { @apply mt-1.5 text-xs font-medium text-risk-red; }
+  .rjsf .field-invalid .form-control { @apply border-risk-red/60 focus:border-risk-red focus:ring-risk-red/10; }
+
+  /* RJSF renders plain HTML; these give its widgets the app's look. */
+  .rjsf fieldset { @apply m-0 border-0 p-0; }
+  .rjsf legend, .rjsf .panel-danger { @apply hidden; }
+  .rjsf .form-control { @apply input; }
+  .rjsf textarea.form-control { @apply h-auto py-2.5 leading-relaxed; }
+  .rjsf select.form-control {
+    @apply appearance-none pr-9;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%2364748B' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1.1rem;
+  }
+  .rjsf .field-radio-group, .rjsf .checkboxes { @apply flex flex-wrap gap-2; }
+  .rjsf .field-radio-group:has(> .radio) { @apply flex-col items-stretch; }
+  .rjsf .radio-inline, .rjsf .checkbox-inline, .rjsf .radio > label, .rjsf .checkbox > label {
+    @apply m-0 inline-flex cursor-pointer select-none items-center gap-2 rounded-xl border border-line bg-white px-3 py-2 text-sm text-ink shadow-xs transition hover:border-chart/40;
+  }
+  .rjsf .radio-inline > span, .rjsf .checkbox-inline > span, .rjsf .radio > label > span, .rjsf .checkbox > label > span { @apply inline-flex items-center gap-2; }
+  .rjsf label:has(input:checked) { @apply border-chart bg-chartsoft font-medium text-chart; }
+  .rjsf input[type="radio"], .rjsf input[type="checkbox"] { @apply h-4 w-4 accent-chart; }
+  .rjsf label:has(input:disabled) { @apply cursor-not-allowed opacity-60; }
+  .rjsf button[type="submit"]:not(.btn-primary):not(.btn-ghost) { @apply hidden; }
+}

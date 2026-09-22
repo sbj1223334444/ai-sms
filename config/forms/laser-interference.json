@@ -1,0 +1,475 @@
+{
+  "meta": {
+    "formId": "laser-interference",
+    "code": "LAS-001",
+    "title": "Laser Beam Interference Report",
+    "summary": "Laser or bright light directed at the aircraft.",
+    "supportsConfidential": false,
+    "attachmentsRequired": false
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "picName",
+      "picEmail",
+      "picMobile",
+      "foName",
+      "foEmail",
+      "foMobile",
+      "dateTimeOfIncident",
+      "aircraftType",
+      "aircraftRegistration",
+      "departureAirport",
+      "destination",
+      "callSign",
+      "reportCompletedAt",
+      "ambientLight",
+      "vmcImc",
+      "nearLocation",
+      "altitude",
+      "phaseOfFlight",
+      "heading",
+      "lightHitEye",
+      "colour",
+      "exposureSeconds",
+      "windowEntered",
+      "lightSourcePosition",
+      "description",
+      "seekMedical",
+      "visualEffectDuration",
+      "operationalEffect"
+    ],
+    "properties": {
+      "picName": {
+        "type": "string",
+        "title": "Name of PIC",
+        "maxLength": 255
+      },
+      "picEmail": {
+        "type": "string",
+        "title": "PIC email",
+        "maxLength": 255,
+        "format": "email"
+      },
+      "picMobile": {
+        "type": "string",
+        "title": "PIC mobile number",
+        "maxLength": 255,
+        "pattern": "^[0-9]{10}$"
+      },
+      "foName": {
+        "type": "string",
+        "title": "Name of first officer",
+        "maxLength": 255
+      },
+      "foEmail": {
+        "type": "string",
+        "title": "FO email",
+        "maxLength": 255,
+        "format": "email"
+      },
+      "foMobile": {
+        "type": "string",
+        "title": "FO mobile number",
+        "maxLength": 255,
+        "pattern": "^[0-9]{10}$"
+      },
+      "dateTimeOfIncident": {
+        "type": "string",
+        "format": "date-time",
+        "title": "Date and time of incident (UTC)"
+      },
+      "aircraftType": {
+        "type": "string",
+        "title": "Type of aircraft",
+        "enum": [
+          "A319",
+          "A320ceo",
+          "A320neo",
+          "A321ceo",
+          "A321neo",
+          "A350-900",
+          "A350-1000",
+          "B737-8",
+          "B737-800",
+          "B777-200LR",
+          "B777-300ER",
+          "B787-8",
+          "B787-9",
+          "Other"
+        ]
+      },
+      "aircraftRegistration": {
+        "type": "string",
+        "title": "Aircraft registration",
+        "maxLength": 255
+      },
+      "departureAirport": {
+        "type": "string",
+        "title": "Departure airport",
+        "maxLength": 255
+      },
+      "destination": {
+        "type": "string",
+        "title": "Destination",
+        "maxLength": 255
+      },
+      "callSign": {
+        "type": "string",
+        "title": "Aircraft ID or call sign",
+        "maxLength": 255
+      },
+      "visionCorrection": {
+        "type": "string",
+        "title": "Type of vision correction worn",
+        "enum": [
+          "Spectacles",
+          "Contact lenses",
+          "None"
+        ]
+      },
+      "reportCompletedAt": {
+        "type": "string",
+        "format": "date-time",
+        "title": "Date and time this report is being completed (UTC)"
+      },
+      "weather": {
+        "type": "string",
+        "title": "Weather conditions",
+        "maxLength": 255
+      },
+      "ambientLight": {
+        "type": "string",
+        "title": "Ambient light level",
+        "enum": [
+          "Day",
+          "Night",
+          "Sunlight",
+          "Dawn",
+          "Dusk",
+          "Starlight",
+          "Moonlight"
+        ]
+      },
+      "vmcImc": {
+        "type": "string",
+        "title": "VMC / IMC",
+        "enum": [
+          "VMC",
+          "IMC"
+        ]
+      },
+      "nearLocation": {
+        "type": "string",
+        "title": "Near (aerodrome, city or navaid)",
+        "maxLength": 255
+      },
+      "altitude": {
+        "type": "number",
+        "title": "Altitude (ft AGL; say if MSL)"
+      },
+      "radialDistance": {
+        "type": "string",
+        "title": "Radial and distance",
+        "maxLength": 255
+      },
+      "bankPitch": {
+        "type": "string",
+        "title": "Aircraft bank and pitch angles",
+        "maxLength": 255
+      },
+      "phaseOfFlight": {
+        "type": "string",
+        "title": "Phase of flight",
+        "enum": [
+          "Parked",
+          "Taxiing",
+          "Take-off",
+          "Initial climb",
+          "Climb",
+          "Cruise",
+          "Descent",
+          "Holding",
+          "Approach",
+          "Landing",
+          "Circuit"
+        ]
+      },
+      "angleOfIncidence": {
+        "type": "number",
+        "title": "Angle of incidence (degrees)"
+      },
+      "heading": {
+        "type": "number",
+        "title": "Heading, or approximate heading if in a turn (degrees)",
+        "minimum": 0,
+        "maximum": 360
+      },
+      "lightHitEye": {
+        "type": "string",
+        "title": "Did the light hit your eye(s) directly or from the side?",
+        "enum": [
+          "Directly",
+          "From the side"
+        ]
+      },
+      "procedureName": {
+        "type": "string",
+        "title": "Type / name of approach or departure procedure",
+        "maxLength": 255
+      },
+      "colour": {
+        "type": "string",
+        "title": "Colour",
+        "enum": [
+          "Green",
+          "Blue",
+          "Red",
+          "White",
+          "Other"
+        ]
+      },
+      "exposureSeconds": {
+        "type": "number",
+        "title": "Duration of exposure (seconds)",
+        "minimum": 0
+      },
+      "lightSource": {
+        "type": "string",
+        "title": "Light source",
+        "enum": [
+          "Stationary",
+          "Moving"
+        ]
+      },
+      "beamVisiblePrior": {
+        "type": "string",
+        "title": "Was the beam visible before the incident?",
+        "enum": [
+          "Yes",
+          "No"
+        ]
+      },
+      "beamNature": {
+        "type": "string",
+        "title": "Nature of beam",
+        "enum": [
+          "Constant",
+          "Flicker",
+          "Pulsed"
+        ]
+      },
+      "windowEntered": {
+        "type": "array",
+        "title": "Window where the light entered",
+        "items": {
+          "type": "string",
+          "enum": [
+            "Left",
+            "Left-front",
+            "Centre",
+            "Right-front",
+            "Right",
+            "Other"
+          ]
+        },
+        "uniqueItems": true,
+        "minItems": 1
+      },
+      "relativeIntensity": {
+        "type": "string",
+        "title": "Relative intensity",
+        "enum": [
+          "Flashbulb",
+          "Headlight",
+          "Sunlight"
+        ]
+      },
+      "lightSourcePosition": {
+        "type": "string",
+        "title": "Position of light source",
+        "maxLength": 255
+      },
+      "intentionallyTracked": {
+        "type": "string",
+        "title": "Do you feel you were intentionally tracked?",
+        "enum": [
+          "Yes",
+          "No"
+        ]
+      },
+      "beamElevation": {
+        "type": "number",
+        "title": "Elevation of beam from horizontal (degrees)"
+      },
+      "description": {
+        "type": "string",
+        "title": "Describe the visual, psychological or physical effects",
+        "maxLength": 5000
+      },
+      "seekMedical": {
+        "type": "string",
+        "title": "Do you intend to seek medical attention?",
+        "enum": [
+          "Yes",
+          "No"
+        ]
+      },
+      "visualEffectDuration": {
+        "type": "string",
+        "title": "Duration of visual effects",
+        "maxLength": 255
+      },
+      "operationalEffect": {
+        "type": "string",
+        "title": "Effect on operational or cockpit procedures",
+        "maxLength": 2000
+      }
+    }
+  },
+  "uiSchema": {
+    "picMobile": {
+      "ui:placeholder": "10-digit number"
+    },
+    "foMobile": {
+      "ui:placeholder": "10-digit number"
+    },
+    "aircraftRegistration": {
+      "ui:placeholder": "VT-XXX"
+    },
+    "vmcImc": {
+      "ui:widget": "radio",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "lightHitEye": {
+      "ui:widget": "radio",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "lightSource": {
+      "ui:widget": "radio",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "beamVisiblePrior": {
+      "ui:widget": "radio",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "windowEntered": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "lightSourcePosition": {
+      "ui:help": "Relative to a geographical feature or the aircraft."
+    },
+    "intentionallyTracked": {
+      "ui:widget": "radio",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "description": {
+      "ui:widget": "textarea",
+      "ui:options": {
+        "rows": 5,
+        "fullWidth": true
+      }
+    },
+    "seekMedical": {
+      "ui:widget": "radio",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "visualEffectDuration": {
+      "ui:placeholder": "e.g. 30 seconds, 2 hours"
+    },
+    "operationalEffect": {
+      "ui:widget": "textarea",
+      "ui:options": {
+        "rows": 4,
+        "fullWidth": true
+      }
+    },
+    "ui:groups": [
+      {
+        "title": "Crew information",
+        "fields": [
+          "picName",
+          "picEmail",
+          "picMobile",
+          "foName",
+          "foEmail",
+          "foMobile"
+        ]
+      },
+      {
+        "title": "Incident details",
+        "fields": [
+          "dateTimeOfIncident",
+          "aircraftType",
+          "aircraftRegistration",
+          "departureAirport",
+          "destination",
+          "callSign",
+          "visionCorrection",
+          "reportCompletedAt"
+        ]
+      },
+      {
+        "title": "Environmental factors",
+        "fields": [
+          "weather",
+          "ambientLight",
+          "vmcImc"
+        ]
+      },
+      {
+        "title": "Location of incident",
+        "fields": [
+          "nearLocation",
+          "altitude",
+          "radialDistance",
+          "bankPitch",
+          "phaseOfFlight",
+          "angleOfIncidence",
+          "heading",
+          "lightHitEye",
+          "procedureName"
+        ]
+      },
+      {
+        "title": "Light description",
+        "fields": [
+          "colour",
+          "exposureSeconds",
+          "lightSource",
+          "beamVisiblePrior",
+          "beamNature",
+          "windowEntered",
+          "relativeIntensity",
+          "lightSourcePosition",
+          "intentionallyTracked",
+          "beamElevation"
+        ]
+      },
+      {
+        "title": "Effect on individual",
+        "fields": [
+          "description",
+          "seekMedical",
+          "visualEffectDuration",
+          "operationalEffect"
+        ]
+      }
+    ]
+  }
+}

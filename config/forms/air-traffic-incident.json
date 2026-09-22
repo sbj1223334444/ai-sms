@@ -1,0 +1,891 @@
+{
+  "meta": {
+    "formId": "air-traffic-incident",
+    "code": "AIR-001",
+    "title": "Air Traffic Incident Report (Airprox)",
+    "summary": "Airprox, procedure or facility incident, sections A to K.",
+    "supportsConfidential": false,
+    "attachmentsRequired": false
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "aircraftIdentification",
+      "incidentType",
+      "dateTimeOfIncident",
+      "position",
+      "headingRoute",
+      "trueAirspeed",
+      "levelAltimeter",
+      "ownClimbDescend",
+      "miscRegistration",
+      "miscAircraftType",
+      "miscOperator",
+      "aerodromeDeparture",
+      "destination",
+      "completionDetails"
+    ],
+    "properties": {
+      "aircraftIdentification": {
+        "type": "string",
+        "title": "Aircraft identification",
+        "maxLength": 255
+      },
+      "incidentType": {
+        "type": "string",
+        "title": "Type of incident",
+        "enum": [
+          "Airprox",
+          "Procedure",
+          "Facility"
+        ]
+      },
+      "dateTimeOfIncident": {
+        "type": "string",
+        "format": "date-time",
+        "title": "Date and time of incident (UTC)"
+      },
+      "position": {
+        "type": "string",
+        "title": "Position",
+        "maxLength": 255
+      },
+      "headingRoute": {
+        "type": "string",
+        "title": "Heading and route",
+        "maxLength": 255
+      },
+      "trueAirspeed": {
+        "type": "number",
+        "title": "True airspeed (kt)",
+        "minimum": 0
+      },
+      "levelAltimeter": {
+        "type": "string",
+        "title": "Level and altimeter setting",
+        "maxLength": 255
+      },
+      "ownClimbDescend": {
+        "type": "array",
+        "title": "Aircraft climbing or descending",
+        "items": {
+          "type": "string",
+          "enum": [
+            "Level flight",
+            "Climbing",
+            "Descending"
+          ]
+        },
+        "uniqueItems": true,
+        "minItems": 1
+      },
+      "ownBankAngle": {
+        "type": "array",
+        "title": "Aircraft bank angle",
+        "items": {
+          "type": "string",
+          "enum": [
+            "Wings level",
+            "Slight bank",
+            "Moderate bank",
+            "Steep bank",
+            "Inverted",
+            "Unknown"
+          ]
+        },
+        "uniqueItems": true
+      },
+      "ownBankDirection": {
+        "type": "array",
+        "title": "Aircraft direction of bank",
+        "items": {
+          "type": "string",
+          "enum": [
+            "Left",
+            "Right",
+            "Unknown"
+          ]
+        },
+        "uniqueItems": true
+      },
+      "visibilityRestrictions": {
+        "type": "array",
+        "title": "Restrictions to visibility",
+        "items": {
+          "type": "string",
+          "enum": [
+            "Sun glare",
+            "Windscreen pillar",
+            "Other cockpit structure",
+            "Dirty windscreen",
+            "None"
+          ]
+        },
+        "uniqueItems": true
+      },
+      "ownLighting": {
+        "type": "array",
+        "title": "Use of aircraft lighting",
+        "items": {
+          "type": "string",
+          "enum": [
+            "Navigation lights",
+            "Strobe lights",
+            "Cabin lights",
+            "Red anti-collision lights",
+            "Landing / taxi lights",
+            "Logo (tail fin) lights",
+            "Other",
+            "None"
+          ]
+        },
+        "uniqueItems": true
+      },
+      "ownAtsAvoidance": {
+        "type": "array",
+        "title": "Traffic avoidance advice issued by ATS",
+        "items": {
+          "type": "string",
+          "enum": [
+            "Yes, based on radar",
+            "Yes, based on visual sighting",
+            "Yes, based on other information",
+            "No"
+          ]
+        },
+        "uniqueItems": true
+      },
+      "ownTrafficInfo": {
+        "type": "array",
+        "title": "Traffic information issued",
+        "items": {
+          "type": "string",
+          "enum": [
+            "Yes, based on radar",
+            "Yes, based on visual sighting",
+            "Yes, based on other information",
+            "No",
+            "Unknown"
+          ]
+        },
+        "uniqueItems": true
+      },
+      "acas": {
+        "type": "array",
+        "title": "Airborne collision avoidance system (ACAS)",
+        "items": {
+          "type": "string",
+          "enum": [
+            "Not carried",
+            "Traffic advisory issued",
+            "Resolution advisory issued",
+            "Traffic advisory or resolution advisory not issued"
+          ]
+        },
+        "uniqueItems": true
+      },
+      "acasType": {
+        "type": "string",
+        "title": "ACAS type",
+        "maxLength": 255
+      },
+      "identification": {
+        "type": "array",
+        "title": "Identification",
+        "items": {
+          "type": "string",
+          "enum": [
+            "No ATS surveillance system available",
+            "Identification",
+            "No identification"
+          ]
+        },
+        "uniqueItems": true
+      },
+      "otherAircraftSighted": {
+        "type": "array",
+        "title": "Other aircraft sighted",
+        "items": {
+          "type": "string",
+          "enum": [
+            "Yes",
+            "No",
+            "Wrong aircraft sighted"
+          ]
+        },
+        "uniqueItems": true
+      },
+      "ownAvoidingAction": {
+        "type": "array",
+        "title": "Avoiding action taken",
+        "items": {
+          "type": "string",
+          "enum": [
+            "Yes",
+            "No"
+          ]
+        },
+        "uniqueItems": true
+      },
+      "flightPlanType": {
+        "type": "string",
+        "title": "Type of flight plan",
+        "maxLength": 255
+      },
+      "vfr": {
+        "type": "string",
+        "title": "VFR",
+        "maxLength": 255
+      },
+      "otherTypeCallsign": {
+        "type": "string",
+        "title": "Type and call sign / registration",
+        "maxLength": 255
+      },
+      "otherDescription": {
+        "type": "array",
+        "title": "If not known, describe",
+        "items": {
+          "type": "string",
+          "enum": [
+            "High wing",
+            "Mid wing",
+            "Low wing",
+            "Rotorcraft",
+            "1 engine",
+            "2 engines",
+            "3 engines",
+            "4 engines",
+            "More than 4 engines"
+          ]
+        },
+        "uniqueItems": true
+      },
+      "otherMarkings": {
+        "type": "string",
+        "title": "Markings, colour or other available details",
+        "maxLength": 2000
+      },
+      "otherClimbDescend": {
+        "type": "array",
+        "title": "Aircraft climbing or descending",
+        "items": {
+          "type": "string",
+          "enum": [
+            "Level flight",
+            "Climbing",
+            "Descending",
+            "Unknown"
+          ]
+        },
+        "uniqueItems": true
+      },
+      "otherBankAngle": {
+        "type": "array",
+        "title": "Aircraft bank angle",
+        "items": {
+          "type": "string",
+          "enum": [
+            "Wings level",
+            "Slight bank",
+            "Moderate bank",
+            "Steep bank",
+            "Inverted",
+            "Unknown"
+          ]
+        },
+        "uniqueItems": true
+      },
+      "otherBankDirection": {
+        "type": "array",
+        "title": "Aircraft direction of bank",
+        "items": {
+          "type": "string",
+          "enum": [
+            "Left",
+            "Right",
+            "Unknown"
+          ]
+        },
+        "uniqueItems": true
+      },
+      "otherLights": {
+        "type": "array",
+        "title": "Lights displayed",
+        "items": {
+          "type": "string",
+          "enum": [
+            "Navigation lights",
+            "Strobe lights",
+            "Cabin lights",
+            "Red anti-collision lights",
+            "Landing / taxi lights",
+            "Logo (tail fin) lights",
+            "Other",
+            "None",
+            "Unknown"
+          ]
+        },
+        "uniqueItems": true
+      },
+      "otherAtsAvoidance": {
+        "type": "array",
+        "title": "Traffic avoidance advice issued by ATS",
+        "items": {
+          "type": "string",
+          "enum": [
+            "Yes, based on radar",
+            "Yes, based on visual sighting",
+            "Yes, based on other information",
+            "No",
+            "Unknown"
+          ]
+        },
+        "uniqueItems": true
+      },
+      "otherTrafficInfo": {
+        "type": "array",
+        "title": "Traffic information issued",
+        "items": {
+          "type": "string",
+          "enum": [
+            "Yes, based on radar",
+            "Yes, based on visual sighting",
+            "Yes, based on other information",
+            "No",
+            "Unknown"
+          ]
+        },
+        "uniqueItems": true
+      },
+      "otherAvoidingAction": {
+        "type": "array",
+        "title": "Avoiding action taken",
+        "items": {
+          "type": "string",
+          "enum": [
+            "Yes",
+            "No",
+            "Unknown"
+          ]
+        },
+        "uniqueItems": true
+      },
+      "closestHorizontal": {
+        "type": "number",
+        "title": "Closest horizontal distance",
+        "minimum": 0
+      },
+      "closestVertical": {
+        "type": "number",
+        "title": "Closest vertical distance",
+        "minimum": 0
+      },
+      "imcVmc": {
+        "type": "string",
+        "title": "IMC / VMC",
+        "enum": [
+          "IMC",
+          "VMC"
+        ]
+      },
+      "imcVmcDetail": {
+        "type": "string",
+        "title": "IMC / VMC details",
+        "maxLength": 255
+      },
+      "cloudPosition": {
+        "type": "string",
+        "title": "Above / below clouds, fog, haze, between layers",
+        "enum": [
+          "Above clouds",
+          "Below clouds",
+          "Fog",
+          "Haze",
+          "Between layers"
+        ]
+      },
+      "cloudPositionDetail": {
+        "type": "string",
+        "title": "Weather description",
+        "maxLength": 255
+      },
+      "distanceBelowCloud": {
+        "type": "number",
+        "title": "Distance vertically from cloud: metres below",
+        "minimum": 0
+      },
+      "distanceAboveCloud": {
+        "type": "number",
+        "title": "Distance vertically from cloud: metres above",
+        "minimum": 0
+      },
+      "inWeather": {
+        "type": "string",
+        "title": "In cloud, rain, snow, sleet, fog or haze",
+        "enum": [
+          "In cloud",
+          "Rain",
+          "Snow",
+          "Sleet",
+          "Fog",
+          "Haze"
+        ]
+      },
+      "inWeatherDetail": {
+        "type": "string",
+        "title": "Details",
+        "maxLength": 255
+      },
+      "sun": {
+        "type": "string",
+        "title": "Flying into / out of sun",
+        "enum": [
+          "Into sun",
+          "Out of sun"
+        ]
+      },
+      "flightVisibility": {
+        "type": "number",
+        "title": "Flight visibility (km)",
+        "minimum": 0
+      },
+      "description": {
+        "type": "string",
+        "title": "Any other information considered important by the pilot in command",
+        "maxLength": 5000
+      },
+      "miscRegistration": {
+        "type": "string",
+        "title": "Aircraft registration",
+        "maxLength": 255
+      },
+      "miscAircraftType": {
+        "type": "string",
+        "title": "Aircraft type",
+        "maxLength": 255
+      },
+      "miscOperator": {
+        "type": "string",
+        "title": "Operator",
+        "maxLength": 255,
+        "default": "Air India"
+      },
+      "aerodromeDeparture": {
+        "type": "string",
+        "title": "Aerodrome of departure",
+        "maxLength": 255
+      },
+      "destination": {
+        "type": "string",
+        "title": "Destination",
+        "maxLength": 255
+      },
+      "aerodromeFirstLanding": {
+        "type": "string",
+        "title": "Aerodrome of first landing",
+        "maxLength": 255
+      },
+      "reportedByRadio": {
+        "type": "string",
+        "title": "Reported by radio or other means",
+        "maxLength": 255
+      },
+      "completionDetails": {
+        "type": "string",
+        "title": "Date, time and place of completion of form",
+        "maxLength": 255
+      },
+      "submitterTelephone": {
+        "type": "string",
+        "title": "Telephone number",
+        "maxLength": 255,
+        "pattern": "^[0-9]{10}$"
+      },
+      "airproxDiagram": {
+        "type": "object",
+        "title": "Diagrams of airprox",
+        "description": "Mark the passage of the other aircraft relative to you, in plan and in elevation, taking yourself to be at the centre of each diagram. Mark both the first sighting and the closest point.",
+        "properties": {
+          "plan": {
+            "type": "object",
+            "properties": {
+              "firstSeen": {
+                "type": "object",
+                "properties": {
+                  "x": {
+                    "type": "number",
+                    "minimum": -14,
+                    "maximum": 14
+                  },
+                  "y": {
+                    "type": "number",
+                    "minimum": -10,
+                    "maximum": 10
+                  }
+                }
+              },
+              "closest": {
+                "type": "object",
+                "properties": {
+                  "x": {
+                    "type": "number",
+                    "minimum": -14,
+                    "maximum": 14
+                  },
+                  "y": {
+                    "type": "number",
+                    "minimum": -10,
+                    "maximum": 10
+                  }
+                }
+              }
+            }
+          },
+          "elevation": {
+            "type": "object",
+            "properties": {
+              "firstSeen": {
+                "type": "object",
+                "properties": {
+                  "x": {
+                    "type": "number",
+                    "minimum": -14,
+                    "maximum": 14
+                  },
+                  "y": {
+                    "type": "number",
+                    "minimum": -10,
+                    "maximum": 10
+                  }
+                }
+              },
+              "closest": {
+                "type": "object",
+                "properties": {
+                  "x": {
+                    "type": "number",
+                    "minimum": -14,
+                    "maximum": 14
+                  },
+                  "y": {
+                    "type": "number",
+                    "minimum": -10,
+                    "maximum": 10
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "uiSchema": {
+    "aircraftIdentification": {
+      "ui:placeholder": "VT-XXX"
+    },
+    "incidentType": {
+      "ui:widget": "radio",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "ownClimbDescend": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "ownBankAngle": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "ownBankDirection": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "visibilityRestrictions": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "ownLighting": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "ownAtsAvoidance": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "ownTrafficInfo": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "acas": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "identification": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "otherAircraftSighted": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "ownAvoidingAction": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "otherTypeCallsign": {
+      "ui:options": {
+        "fullWidth": true
+      }
+    },
+    "otherDescription": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "otherMarkings": {
+      "ui:widget": "textarea",
+      "ui:options": {
+        "rows": 4,
+        "fullWidth": true
+      }
+    },
+    "otherClimbDescend": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "otherBankAngle": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "otherBankDirection": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "otherLights": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "otherAtsAvoidance": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "otherTrafficInfo": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "otherAvoidingAction": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "closestHorizontal": {
+      "ui:help": "Metres or feet; say which in section G"
+    },
+    "closestVertical": {
+      "ui:help": "Metres or feet; say which in section G"
+    },
+    "imcVmc": {
+      "ui:widget": "radio",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "cloudPosition": {
+      "ui:widget": "radio",
+      "ui:options": {
+        "inline": false
+      }
+    },
+    "inWeather": {
+      "ui:widget": "radio",
+      "ui:options": {
+        "inline": false
+      }
+    },
+    "description": {
+      "ui:widget": "textarea",
+      "ui:options": {
+        "rows": 5,
+        "fullWidth": true
+      }
+    },
+    "miscRegistration": {
+      "ui:placeholder": "VT-XXX"
+    },
+    "aerodromeDeparture": {
+      "ui:placeholder": "ICAO code"
+    },
+    "destination": {
+      "ui:placeholder": "ICAO code"
+    },
+    "aerodromeFirstLanding": {
+      "ui:placeholder": "ICAO code"
+    },
+    "completionDetails": {
+      "ui:options": {
+        "fullWidth": true
+      }
+    },
+    "submitterTelephone": {
+      "ui:placeholder": "10-digit number"
+    },
+    "ui:groups": [
+      {
+        "title": "Section A: Aircraft identification",
+        "fields": [
+          "aircraftIdentification",
+          "incidentType"
+        ]
+      },
+      {
+        "title": "Section B: The incident, general",
+        "fields": [
+          "dateTimeOfIncident",
+          "position"
+        ]
+      },
+      {
+        "title": "Section C: Own aircraft",
+        "fields": [
+          "headingRoute",
+          "trueAirspeed",
+          "levelAltimeter",
+          "ownClimbDescend",
+          "ownBankAngle",
+          "ownBankDirection",
+          "visibilityRestrictions",
+          "ownLighting",
+          "ownAtsAvoidance",
+          "ownTrafficInfo",
+          "acas",
+          "acasType",
+          "identification",
+          "otherAircraftSighted",
+          "ownAvoidingAction",
+          "flightPlanType",
+          "vfr"
+        ]
+      },
+      {
+        "title": "Section D: Other aircraft",
+        "fields": [
+          "otherTypeCallsign",
+          "otherDescription",
+          "otherMarkings",
+          "otherClimbDescend",
+          "otherBankAngle",
+          "otherBankDirection",
+          "otherLights",
+          "otherAtsAvoidance",
+          "otherTrafficInfo",
+          "otherAvoidingAction"
+        ]
+      },
+      {
+        "title": "Section E: Distance",
+        "fields": [
+          "closestHorizontal",
+          "closestVertical"
+        ]
+      },
+      {
+        "title": "Section F: Flight weather conditions",
+        "fields": [
+          "imcVmc",
+          "imcVmcDetail",
+          "cloudPosition",
+          "cloudPositionDetail",
+          "distanceBelowCloud",
+          "distanceAboveCloud",
+          "inWeather",
+          "inWeatherDetail",
+          "sun",
+          "flightVisibility"
+        ]
+      },
+      {
+        "title": "Section G: Additional information",
+        "fields": [
+          "description"
+        ]
+      },
+      {
+        "title": "Section H: Miscellaneous",
+        "fields": [
+          "miscRegistration",
+          "miscAircraftType",
+          "miscOperator",
+          "aerodromeDeparture",
+          "destination",
+          "aerodromeFirstLanding",
+          "reportedByRadio",
+          "completionDetails"
+        ]
+      },
+      {
+        "title": "Section J: Person submitting report",
+        "description": "Your function and address are taken from your account. The signature is added on the printed report.",
+        "fields": [
+          "submitterTelephone"
+        ]
+      },
+      {
+        "title": "Section K: Person receiving report",
+        "description": "Completed by the person who receives the report, not by the reporter.",
+        "fields": []
+      },
+      {
+        "title": "Section L: Diagrams of airprox",
+        "description": "The sheet attached to the paper form. Click a grid to place a mark, or use the arrow keys.",
+        "fields": [
+          "airproxDiagram"
+        ]
+      }
+    ],
+    "airproxDiagram": {
+      "ui:field": "airproxDiagram",
+      "ui:options": {
+        "fullWidth": true
+      }
+    }
+  }
+}

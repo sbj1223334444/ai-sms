@@ -1,0 +1,45 @@
+{
+  "note": "ICAO 5x5. Severity A (Catastrophic) to E (Negligible); probability 5 (Frequent) to 1 (Extremely improbable). Index is probability+severity, e.g. 5A.",
+  "severity": [
+    { "code": "A", "label": "Catastrophic" },
+    { "code": "B", "label": "Hazardous" },
+    { "code": "C", "label": "Major" },
+    { "code": "D", "label": "Minor" },
+    { "code": "E", "label": "Negligible" }
+  ],
+  "probability": [
+    { "code": "5", "label": "Frequent" },
+    { "code": "4", "label": "Occasional" },
+    { "code": "3", "label": "Remote" },
+    { "code": "2", "label": "Improbable" },
+    { "code": "1", "label": "Extremely improbable" }
+  ],
+  "cells": {
+    "5A": "red", "5B": "red", "5C": "red", "5D": "yellow", "5E": "yellow",
+    "4A": "red", "4B": "red", "4C": "orange", "4D": "yellow", "4E": "green",
+    "3A": "red", "3B": "orange", "3C": "orange", "3D": "yellow", "3E": "green",
+    "2A": "orange", "2B": "yellow", "2C": "yellow", "2D": "green", "2E": "green",
+    "1A": "yellow", "1B": "yellow", "1C": "green", "1D": "green", "1E": "green"
+  },
+  "zones": {
+    "red":    { "label": "Intolerable", "tolerability": "Unacceptable under the existing circumstances", "authority": "COFS" },
+    "orange": { "label": "High",        "tolerability": "Acceptable only with risk control and management approval", "authority": "Head of Department" },
+    "yellow": { "label": "Tolerable",   "tolerability": "Acceptable with mitigation and review", "authority": "SMS Nodal / Investigator" },
+    "green":  { "label": "Acceptable",  "tolerability": "Acceptable as is", "authority": "Investigator" }
+  },
+  "defaultTolerance": {
+    "investigator": "yellow",
+    "gatekeeper": "orange",
+    "admin": "orange",
+    "cofs": "red",
+    "system_admin": "red",
+    "reporter": "green"
+  },
+  "departmentApprovers": {
+    "Flight Operations": "cofs@airindia.com",
+    "Engineering": "head.eng@airindia.com",
+    "Cabin Crew": "head.cabin@airindia.com",
+    "Cargo": "head.cargo@airindia.com",
+    "AOD": "head.aod@airindia.com"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "note": "BRD section 5. The shipped default workflows. Admins can change them in Administration -> Workflows (US-18), which saves to data/config/workflows.json in the datastore and overrides this file. report-review must stay first and closure last.",
+  "default": [
+    { "key": "report-review",   "name": "Report Review",                 "taskDays": 2 },
+    { "key": "investigation",   "name": "Investigation",                 "taskDays": 10 },
+    { "key": "meeting-minutes", "name": "Investigation Meeting Minutes",  "taskDays": 1 },
+    { "key": "findings",        "name": "Findings and Actions",          "taskDays": 1 },
+    { "key": "closure",         "name": "Closure Approval",              "taskDays": 7 }
+  ],
+  "byFormId": {}
+}

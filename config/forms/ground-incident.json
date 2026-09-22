@@ -1,0 +1,184 @@
+{
+  "meta": {
+    "formId": "ground-incident",
+    "code": "GIR-001",
+    "title": "Ground Incident Report",
+    "summary": "Damage, injury or near miss on the ramp, in the hangar or in cargo handling.",
+    "supportsConfidential": false,
+    "attachmentsRequired": false
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "operatorName",
+      "dateOfIncident",
+      "timeOfOccurrence",
+      "aircraftType",
+      "aircraftRegistration",
+      "placeOfOccurrence",
+      "description",
+      "immediateAction"
+    ],
+    "properties": {
+      "operatorName": {
+        "type": "string",
+        "title": "Name of operator",
+        "maxLength": 255,
+        "default": "Air India"
+      },
+      "dateOfIncident": {
+        "type": "string",
+        "format": "date",
+        "title": "Date of incident / occurrence"
+      },
+      "timeOfOccurrence": {
+        "type": "string",
+        "title": "Time of occurrence",
+        "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+      },
+      "aircraftType": {
+        "type": "string",
+        "title": "Type of aircraft",
+        "maxLength": 255
+      },
+      "aircraftRegistration": {
+        "type": "string",
+        "title": "Aircraft registration",
+        "maxLength": 255
+      },
+      "flightNo": {
+        "type": "string",
+        "title": "Flight number",
+        "maxLength": 10,
+        "pattern": "^[A-Za-z0-9]{2,3} ?[0-9]{1,4}[A-Za-z]?$"
+      },
+      "placeOfOccurrence": {
+        "type": "string",
+        "title": "Place of occurrence",
+        "maxLength": 255
+      },
+      "description": {
+        "type": "string",
+        "title": "Description of occurrence",
+        "maxLength": 5000
+      },
+      "damageDetails": {
+        "type": "string",
+        "title": "Details of damage to aircraft / equipment",
+        "maxLength": 2000
+      },
+      "injuryDetails": {
+        "type": "string",
+        "title": "Injury details (if any)",
+        "maxLength": 2000
+      },
+      "immediateAction": {
+        "type": "string",
+        "title": "Immediate action taken",
+        "maxLength": 2000
+      },
+      "suggestion": {
+        "type": "string",
+        "title": "Suggestion for resolution",
+        "maxLength": 2000
+      },
+      "reporterMobile": {
+        "type": "string",
+        "title": "Reporter mobile number",
+        "maxLength": 255,
+        "pattern": "^[0-9]{10}$"
+      }
+    }
+  },
+  "uiSchema": {
+    "operatorName": {
+      "ui:placeholder": "Operator name"
+    },
+    "timeOfOccurrence": {
+      "ui:placeholder": "HH:MM"
+    },
+    "aircraftType": {
+      "ui:placeholder": "e.g. A320neo"
+    },
+    "aircraftRegistration": {
+      "ui:placeholder": "VT-XXX"
+    },
+    "flightNo": {
+      "ui:placeholder": "e.g. ZZ 101"
+    },
+    "placeOfOccurrence": {
+      "ui:placeholder": "e.g. Stand 42, Terminal 3",
+      "ui:options": {
+        "fullWidth": true
+      }
+    },
+    "description": {
+      "ui:widget": "textarea",
+      "ui:options": {
+        "rows": 6,
+        "fullWidth": true
+      }
+    },
+    "damageDetails": {
+      "ui:widget": "textarea",
+      "ui:options": {
+        "rows": 4,
+        "fullWidth": true
+      }
+    },
+    "injuryDetails": {
+      "ui:widget": "textarea",
+      "ui:options": {
+        "rows": 4,
+        "fullWidth": true
+      }
+    },
+    "immediateAction": {
+      "ui:widget": "textarea",
+      "ui:options": {
+        "rows": 4,
+        "fullWidth": true
+      }
+    },
+    "suggestion": {
+      "ui:widget": "textarea",
+      "ui:options": {
+        "rows": 4,
+        "fullWidth": true
+      }
+    },
+    "reporterMobile": {
+      "ui:placeholder": "10-digit number"
+    },
+    "ui:groups": [
+      {
+        "title": "Aircraft and occurrence",
+        "fields": [
+          "operatorName",
+          "dateOfIncident",
+          "timeOfOccurrence",
+          "aircraftType",
+          "aircraftRegistration",
+          "flightNo",
+          "placeOfOccurrence"
+        ]
+      },
+      {
+        "title": "What happened",
+        "fields": [
+          "description",
+          "damageDetails",
+          "injuryDetails",
+          "immediateAction",
+          "suggestion"
+        ]
+      },
+      {
+        "title": "Your contact",
+        "fields": [
+          "reporterMobile"
+        ]
+      }
+    ]
+  }
+}

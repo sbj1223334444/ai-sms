@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2020",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "outDir": ".check"
+  },
+  "include": ["src/lib/__checks__/rules.check.ts", "src/lib/risk.ts", "src/lib/workflow.ts", "src/lib/rbac.ts", "src/lib/types.ts", "src/lib/demo-users.ts", "src/lib/form-builder.ts", "src/lib/report-edit.ts", "src/lib/tasks.ts"]
+}

@@ -1,0 +1,485 @@
+{
+  "meta": {
+    "formId": "death-on-board",
+    "code": "DOB-001",
+    "title": "Death on Board Report",
+    "summary": "Death of a passenger on board the aircraft.",
+    "supportsConfidential": false,
+    "attachmentsRequired": true
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "contactNo",
+      "base",
+      "flightNo",
+      "flightDate",
+      "phaseOfFlight",
+      "dateOfEvent",
+      "deceasedName",
+      "address",
+      "age",
+      "gender",
+      "nationality",
+      "passportNo",
+      "seatNo",
+      "timeOfDeath",
+      "description"
+    ],
+    "properties": {
+      "contactNo": {
+        "type": "string",
+        "title": "Contact number",
+        "maxLength": 255,
+        "pattern": "^[0-9]{10}$"
+      },
+      "base": {
+        "type": "string",
+        "title": "Base",
+        "enum": [
+          "DEL",
+          "BOM",
+          "BLR",
+          "MAA",
+          "CCU",
+          "HYD",
+          "AMD",
+          "COK",
+          "GOI",
+          "PNQ",
+          "LHR",
+          "JFK",
+          "SIN",
+          "DXB",
+          "SYD"
+        ]
+      },
+      "flightNo": {
+        "type": "string",
+        "title": "Flight number",
+        "maxLength": 10,
+        "pattern": "^[A-Za-z0-9]{2,3} ?[0-9]{1,4}[A-Za-z]?$"
+      },
+      "flightDate": {
+        "type": "string",
+        "format": "date",
+        "title": "Flight date"
+      },
+      "phaseOfFlight": {
+        "type": "string",
+        "title": "Phase of flight",
+        "enum": [
+          "Parked",
+          "Taxiing",
+          "Take-off",
+          "Initial climb",
+          "Climb",
+          "Cruise",
+          "Descent",
+          "Holding",
+          "Approach",
+          "Landing",
+          "Circuit"
+        ]
+      },
+      "dateOfEvent": {
+        "type": "string",
+        "format": "date",
+        "title": "Date of event"
+      },
+      "deceasedName": {
+        "type": "string",
+        "title": "Name of deceased passenger",
+        "maxLength": 255
+      },
+      "address": {
+        "type": "string",
+        "title": "Address",
+        "maxLength": 2000
+      },
+      "age": {
+        "type": "integer",
+        "title": "Age",
+        "minimum": 0,
+        "maximum": 130
+      },
+      "gender": {
+        "type": "string",
+        "title": "Male / female",
+        "enum": [
+          "Male",
+          "Female"
+        ]
+      },
+      "nationality": {
+        "type": "string",
+        "title": "Nationality",
+        "enum": [
+          "Afghanistan",
+          "Albania",
+          "Algeria",
+          "Andorra",
+          "Angola",
+          "Antigua and Barbuda",
+          "Argentina",
+          "Armenia",
+          "Australia",
+          "Austria",
+          "Azerbaijan",
+          "Bahamas",
+          "Bahrain",
+          "Bangladesh",
+          "Barbados",
+          "Belarus",
+          "Belgium",
+          "Belize",
+          "Benin",
+          "Bhutan",
+          "Bolivia",
+          "Bosnia and Herzegovina",
+          "Botswana",
+          "Brazil",
+          "Brunei",
+          "Bulgaria",
+          "Burkina Faso",
+          "Burundi",
+          "Cambodia",
+          "Cameroon",
+          "Canada",
+          "Cape Verde",
+          "Central African Republic",
+          "Chad",
+          "Chile",
+          "China",
+          "Colombia",
+          "Comoros",
+          "Congo",
+          "Costa Rica",
+          "Croatia",
+          "Cuba",
+          "Cyprus",
+          "Czechia",
+          "Democratic Republic of the Congo",
+          "Denmark",
+          "Djibouti",
+          "Dominica",
+          "Dominican Republic",
+          "Ecuador",
+          "Egypt",
+          "El Salvador",
+          "Equatorial Guinea",
+          "Eritrea",
+          "Estonia",
+          "Eswatini",
+          "Ethiopia",
+          "Fiji",
+          "Finland",
+          "France",
+          "Gabon",
+          "Gambia",
+          "Georgia",
+          "Germany",
+          "Ghana",
+          "Greece",
+          "Grenada",
+          "Guatemala",
+          "Guinea",
+          "Guinea-Bissau",
+          "Guyana",
+          "Haiti",
+          "Honduras",
+          "Hong Kong",
+          "Hungary",
+          "Iceland",
+          "India",
+          "Indonesia",
+          "Iran",
+          "Iraq",
+          "Ireland",
+          "Israel",
+          "Italy",
+          "Ivory Coast",
+          "Jamaica",
+          "Japan",
+          "Jordan",
+          "Kazakhstan",
+          "Kenya",
+          "Kiribati",
+          "Kuwait",
+          "Kyrgyzstan",
+          "Laos",
+          "Latvia",
+          "Lebanon",
+          "Lesotho",
+          "Liberia",
+          "Libya",
+          "Liechtenstein",
+          "Lithuania",
+          "Luxembourg",
+          "Macau",
+          "Madagascar",
+          "Malawi",
+          "Malaysia",
+          "Maldives",
+          "Mali",
+          "Malta",
+          "Marshall Islands",
+          "Mauritania",
+          "Mauritius",
+          "Mexico",
+          "Micronesia",
+          "Moldova",
+          "Monaco",
+          "Mongolia",
+          "Montenegro",
+          "Morocco",
+          "Mozambique",
+          "Myanmar",
+          "Namibia",
+          "Nauru",
+          "Nepal",
+          "Netherlands",
+          "New Zealand",
+          "Nicaragua",
+          "Niger",
+          "Nigeria",
+          "North Korea",
+          "North Macedonia",
+          "Norway",
+          "Oman",
+          "Pakistan",
+          "Palau",
+          "Palestine",
+          "Panama",
+          "Papua New Guinea",
+          "Paraguay",
+          "Peru",
+          "Philippines",
+          "Poland",
+          "Portugal",
+          "Qatar",
+          "Romania",
+          "Russia",
+          "Rwanda",
+          "Saint Kitts and Nevis",
+          "Saint Lucia",
+          "Saint Vincent and the Grenadines",
+          "Samoa",
+          "San Marino",
+          "Sao Tome and Principe",
+          "Saudi Arabia",
+          "Senegal",
+          "Serbia",
+          "Seychelles",
+          "Sierra Leone",
+          "Singapore",
+          "Slovakia",
+          "Slovenia",
+          "Solomon Islands",
+          "Somalia",
+          "South Africa",
+          "South Korea",
+          "South Sudan",
+          "Spain",
+          "Sri Lanka",
+          "Sudan",
+          "Suriname",
+          "Sweden",
+          "Switzerland",
+          "Syria",
+          "Taiwan",
+          "Tajikistan",
+          "Tanzania",
+          "Thailand",
+          "Timor-Leste",
+          "Togo",
+          "Tonga",
+          "Trinidad and Tobago",
+          "Tunisia",
+          "Turkey",
+          "Turkmenistan",
+          "Tuvalu",
+          "Uganda",
+          "Ukraine",
+          "United Arab Emirates",
+          "United Kingdom",
+          "United States",
+          "Uruguay",
+          "Uzbekistan",
+          "Vanuatu",
+          "Vatican City",
+          "Venezuela",
+          "Vietnam",
+          "Yemen",
+          "Zambia",
+          "Zimbabwe",
+          "Other"
+        ]
+      },
+      "passportNo": {
+        "type": "string",
+        "title": "Passport number",
+        "maxLength": 255
+      },
+      "seatNo": {
+        "type": "string",
+        "title": "Seat number",
+        "maxLength": 255
+      },
+      "companionName": {
+        "type": "string",
+        "title": "Name of relative or other companion",
+        "maxLength": 255
+      },
+      "timeOfDeath": {
+        "type": "string",
+        "title": "Time of death",
+        "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+      },
+      "lastMeal": {
+        "type": "string",
+        "title": "Last meal partaken",
+        "maxLength": 2000
+      },
+      "specialInstructions": {
+        "type": "string",
+        "title": "Special instructions given at embarkation",
+        "maxLength": 2000
+      },
+      "doctorNurseDetails": {
+        "type": "string",
+        "title": "Doctor / nurse details",
+        "maxLength": 2000
+      },
+      "otherInformation": {
+        "type": "string",
+        "title": "Any other relevant information",
+        "maxLength": 2000
+      },
+      "description": {
+        "type": "string",
+        "title": "Death on board: description",
+        "minLength": 100,
+        "maxLength": 5000
+      }
+    }
+  },
+  "uiSchema": {
+    "contactNo": {
+      "ui:placeholder": "10-digit number"
+    },
+    "flightNo": {
+      "ui:placeholder": "e.g. ZZ 101"
+    },
+    "address": {
+      "ui:widget": "textarea",
+      "ui:options": {
+        "rows": 3
+      }
+    },
+    "gender": {
+      "ui:widget": "radio",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "seatNo": {
+      "ui:placeholder": "e.g. 23C"
+    },
+    "timeOfDeath": {
+      "ui:placeholder": "HH:MM"
+    },
+    "lastMeal": {
+      "ui:widget": "textarea",
+      "ui:options": {
+        "rows": 4,
+        "fullWidth": true
+      },
+      "ui:help": "What was served, and when."
+    },
+    "specialInstructions": {
+      "ui:widget": "textarea",
+      "ui:options": {
+        "rows": 4,
+        "fullWidth": true
+      }
+    },
+    "doctorNurseDetails": {
+      "ui:widget": "textarea",
+      "ui:options": {
+        "rows": 4,
+        "fullWidth": true
+      },
+      "ui:help": "Name, address and phone of the attending medical professional."
+    },
+    "otherInformation": {
+      "ui:widget": "textarea",
+      "ui:options": {
+        "rows": 4,
+        "fullWidth": true
+      }
+    },
+    "description": {
+      "ui:widget": "textarea",
+      "ui:options": {
+        "rows": 6,
+        "fullWidth": true
+      },
+      "ui:help": "Details of the occurrence and the actions taken by the crew. At least 100 characters."
+    },
+    "ui:groups": [
+      {
+        "title": "Reporter information",
+        "description": "Your name, staff number and email are taken from your account.",
+        "fields": [
+          "contactNo",
+          "base"
+        ]
+      },
+      {
+        "title": "Flight information",
+        "description": "Aircraft type, sector and registration are filled in automatically from CAE after you submit. You do not need to enter them.",
+        "fields": [
+          "flightNo",
+          "flightDate",
+          "phaseOfFlight",
+          "dateOfEvent"
+        ]
+      },
+      {
+        "title": "Crew details",
+        "description": "The cabin supervisor and crew details (up to 14 crew) are filled in automatically from CAE after you submit. You do not need to enter them.",
+        "fields": []
+      },
+      {
+        "title": "Passenger details",
+        "fields": [
+          "deceasedName",
+          "address",
+          "age",
+          "gender",
+          "nationality",
+          "passportNo",
+          "seatNo",
+          "companionName",
+          "timeOfDeath",
+          "lastMeal",
+          "specialInstructions",
+          "doctorNurseDetails",
+          "otherInformation"
+        ]
+      },
+      {
+        "title": "Occurrence description",
+        "fields": [
+          "description"
+        ]
+      },
+      {
+        "title": "Documents to attach",
+        "description": "Attach below: cabin crew work allocation sheet, Death on Board form, CDLB (if applicable), Form A (if applicable), crew statements, boarding card (passenger details), MedAire facility used, and any other picture supporting the report.",
+        "fields": []
+      }
+    ]
+  }
+}

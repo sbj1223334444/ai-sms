@@ -1,0 +1,950 @@
+{
+  "meta": {
+    "formId": "runway-incursion",
+    "code": "RWI-001",
+    "title": "Runway Incursion Initial Report",
+    "summary": "Unauthorised presence of an aircraft, vehicle or person on a runway, sections A to R.",
+    "supportsConfidential": false,
+    "attachmentsRequired": false
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "dateTimeOfIncident",
+      "dayNight",
+      "telephone",
+      "facilityUnit",
+      "completionDetails",
+      "icaoAerodrome",
+      "surfaceCondition",
+      "evasiveAircraft1",
+      "evasiveAircraft2",
+      "evasiveVehicle",
+      "cpVerticalFt",
+      "cpHorizontalM",
+      "commDifficulties",
+      "description",
+      "evasiveActionDescription",
+      "reactionTimeAssessment",
+      "severityAssessment",
+      "ac1Registration",
+      "ac1CallSign",
+      "ac1Operator",
+      "ac1Type",
+      "ac1FlightType",
+      "ac1FlightRules",
+      "aircraft2Involved",
+      "vehicleInvolved"
+    ],
+    "properties": {
+      "dateTimeOfIncident": {
+        "type": "string",
+        "format": "date-time",
+        "title": "Date and time of incident (UTC)"
+      },
+      "dayNight": {
+        "type": "string",
+        "title": "Day / night",
+        "enum": [
+          "Day",
+          "Night"
+        ]
+      },
+      "telephone": {
+        "type": "string",
+        "title": "Telephone",
+        "maxLength": 255,
+        "pattern": "^[0-9]{10}$"
+      },
+      "facilityUnit": {
+        "type": "string",
+        "title": "Facility / unit",
+        "maxLength": 255
+      },
+      "completionDetails": {
+        "type": "string",
+        "title": "Date, time and place of completion of form",
+        "maxLength": 255
+      },
+      "icaoAerodrome": {
+        "type": "string",
+        "title": "ICAO aerodrome designator",
+        "maxLength": 255,
+        "pattern": "^[A-Za-z]{4}$"
+      },
+      "surfaceCondition": {
+        "type": "string",
+        "title": "Surface condition (braking)",
+        "maxLength": 255
+      },
+      "aircraft1": {
+        "type": "string",
+        "title": "Aircraft 1",
+        "maxLength": 255
+      },
+      "aircraft2": {
+        "type": "string",
+        "title": "Aircraft 2",
+        "maxLength": 255
+      },
+      "aircraft3": {
+        "type": "string",
+        "title": "Aircraft 3",
+        "maxLength": 255
+      },
+      "vehicle": {
+        "type": "string",
+        "title": "Vehicle",
+        "maxLength": 255
+      },
+      "person": {
+        "type": "string",
+        "title": "Person",
+        "maxLength": 255
+      },
+      "wind": {
+        "type": "string",
+        "title": "Wind",
+        "maxLength": 255
+      },
+      "visibilityRvr": {
+        "type": "string",
+        "title": "Visibility / RVR",
+        "maxLength": 255
+      },
+      "temperatureC": {
+        "type": "number",
+        "title": "Temperature (°C)"
+      },
+      "ceilingCloud": {
+        "type": "string",
+        "title": "Ceiling / cloud",
+        "maxLength": 255
+      },
+      "weatherAdditional": {
+        "type": "string",
+        "title": "Additional information",
+        "maxLength": 255
+      },
+      "evasiveAircraft1": {
+        "type": "string",
+        "title": "Evasive action by aircraft 1?",
+        "enum": [
+          "Yes",
+          "No"
+        ]
+      },
+      "distanceRolled1": {
+        "type": "number",
+        "title": "Distance rolled (if applicable)",
+        "minimum": 0
+      },
+      "distanceToThreshold1": {
+        "type": "number",
+        "title": "Distance to runway threshold (if applicable)",
+        "minimum": 0
+      },
+      "evasiveAircraft2": {
+        "type": "string",
+        "title": "Evasive action by aircraft 2?",
+        "enum": [
+          "Yes",
+          "No"
+        ]
+      },
+      "distanceRolled2": {
+        "type": "number",
+        "title": "Distance rolled (if applicable)",
+        "minimum": 0
+      },
+      "distanceToThreshold2": {
+        "type": "number",
+        "title": "Distance to runway threshold (if applicable)",
+        "minimum": 0
+      },
+      "evasiveVehicle": {
+        "type": "string",
+        "title": "Evasive action by vehicle?",
+        "enum": [
+          "Yes",
+          "No"
+        ]
+      },
+      "cpVerticalFt": {
+        "type": "number",
+        "title": "Vertical (ft)",
+        "minimum": 0
+      },
+      "cpHorizontalM": {
+        "type": "number",
+        "title": "Horizontal (m)",
+        "minimum": 0
+      },
+      "commDifficulties": {
+        "type": "string",
+        "title": "Were there communication difficulties?",
+        "enum": [
+          "Yes",
+          "No"
+        ]
+      },
+      "atcForgot": {
+        "type": "array",
+        "title": "Did ATC forget about",
+        "items": {
+          "type": "string",
+          "enum": [
+            "An aircraft, person or vehicle cleared onto or to cross a runway",
+            "An aircraft on approach to land",
+            "A runway closure"
+          ]
+        },
+        "uniqueItems": true
+      },
+      "description": {
+        "type": "string",
+        "title": "Description or diagram of geometry",
+        "maxLength": 5000
+      },
+      "evasiveActionDescription": {
+        "type": "string",
+        "title": "Description of evasive or corrective action",
+        "maxLength": 2000
+      },
+      "reactionTimeAssessment": {
+        "type": "string",
+        "title": "Assessment of available reaction time",
+        "maxLength": 2000
+      },
+      "voiceCommReview": {
+        "type": "string",
+        "title": "Voice communication review",
+        "maxLength": 2000
+      },
+      "severityAssessment": {
+        "type": "string",
+        "title": "Initial assessment of severity",
+        "maxLength": 2000
+      },
+      "ac1Registration": {
+        "type": "string",
+        "title": "Registration number",
+        "maxLength": 255
+      },
+      "ac1CallSign": {
+        "type": "string",
+        "title": "Call sign",
+        "maxLength": 255
+      },
+      "ac1Ssr": {
+        "type": "string",
+        "title": "SSR code (if applicable)",
+        "maxLength": 255
+      },
+      "ac1FlightNo": {
+        "type": "string",
+        "title": "Flight number",
+        "maxLength": 10,
+        "pattern": "^[A-Za-z0-9]{2,3} ?[0-9]{1,4}[A-Za-z]?$"
+      },
+      "ac1Operator": {
+        "type": "string",
+        "title": "Owner / operator",
+        "maxLength": 255,
+        "default": "Air India"
+      },
+      "ac1Type": {
+        "type": "string",
+        "title": "Aircraft 1 type",
+        "maxLength": 255
+      },
+      "ac1FlightType": {
+        "type": "array",
+        "title": "Type of flight",
+        "items": {
+          "type": "string",
+          "enum": [
+            "General aviation",
+            "Military",
+            "Non-scheduled",
+            "Scheduled",
+            "Other",
+            "Not applicable"
+          ]
+        },
+        "uniqueItems": true,
+        "minItems": 1
+      },
+      "ac1FlightRules": {
+        "type": "array",
+        "title": "Flight rules",
+        "items": {
+          "type": "string",
+          "enum": [
+            "IFR",
+            "VFR"
+          ]
+        },
+        "uniqueItems": true,
+        "minItems": 1
+      },
+      "aircraft2Involved": {
+        "type": "string",
+        "title": "Was a second aircraft involved?",
+        "enum": [
+          "Yes",
+          "No"
+        ],
+        "default": "No"
+      },
+      "vehicleInvolved": {
+        "type": "string",
+        "title": "Was a vehicle involved?",
+        "enum": [
+          "Yes",
+          "No"
+        ],
+        "default": "No"
+      }
+    },
+    "dependencies": {
+      "evasiveAircraft1": {
+        "oneOf": [
+          {
+            "properties": {
+              "evasiveAircraft1": {
+                "const": "Yes"
+              },
+              "evasiveAircraft1Actions": {
+                "type": "array",
+                "title": "Evasive action taken",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "Cancelled take-off clearance",
+                    "Rejected take-off",
+                    "Rotated early",
+                    "Delayed rotation",
+                    "Abrupt stop",
+                    "Swerved",
+                    "Missed approach",
+                    "Other"
+                  ]
+                },
+                "uniqueItems": true,
+                "minItems": 1
+              }
+            },
+            "required": [
+              "evasiveAircraft1Actions"
+            ]
+          },
+          {
+            "properties": {
+              "evasiveAircraft1": {
+                "const": "No"
+              }
+            }
+          }
+        ]
+      },
+      "evasiveAircraft2": {
+        "oneOf": [
+          {
+            "properties": {
+              "evasiveAircraft2": {
+                "const": "Yes"
+              },
+              "evasiveAircraft2Actions": {
+                "type": "array",
+                "title": "Evasive action taken",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "Cancelled take-off clearance",
+                    "Rejected take-off",
+                    "Rotated early",
+                    "Delayed rotation",
+                    "Abrupt stop",
+                    "Swerved",
+                    "Missed approach",
+                    "Other"
+                  ]
+                },
+                "uniqueItems": true,
+                "minItems": 1
+              }
+            },
+            "required": [
+              "evasiveAircraft2Actions"
+            ]
+          },
+          {
+            "properties": {
+              "evasiveAircraft2": {
+                "const": "No"
+              }
+            }
+          }
+        ]
+      },
+      "evasiveVehicle": {
+        "oneOf": [
+          {
+            "properties": {
+              "evasiveVehicle": {
+                "const": "Yes"
+              },
+              "evasiveVehicleActions": {
+                "type": "array",
+                "title": "Evasive action taken",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "Abrupt stop",
+                    "Swerve",
+                    "Other"
+                  ]
+                },
+                "uniqueItems": true,
+                "minItems": 1
+              }
+            },
+            "required": [
+              "evasiveVehicleActions"
+            ]
+          },
+          {
+            "properties": {
+              "evasiveVehicle": {
+                "const": "No"
+              }
+            }
+          }
+        ]
+      },
+      "commDifficulties": {
+        "oneOf": [
+          {
+            "properties": {
+              "commDifficulties": {
+                "const": "Yes"
+              },
+              "commDifficultyTypes": {
+                "type": "array",
+                "title": "Communication difficulties",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "Read back / hear back",
+                    "Blocked communication",
+                    "Partially blocked communication",
+                    "Confused call signs",
+                    "Aircraft / vehicle on wrong frequency",
+                    "No radio",
+                    "Non-standard phraseology"
+                  ]
+                },
+                "uniqueItems": true,
+                "minItems": 1
+              }
+            },
+            "required": [
+              "commDifficultyTypes"
+            ]
+          },
+          {
+            "properties": {
+              "commDifficulties": {
+                "const": "No"
+              }
+            }
+          }
+        ]
+      },
+      "aircraft2Involved": {
+        "oneOf": [
+          {
+            "properties": {
+              "aircraft2Involved": {
+                "const": "Yes"
+              },
+              "ac2Registration": {
+                "type": "string",
+                "title": "Registration number",
+                "maxLength": 255
+              },
+              "ac2CallSign": {
+                "type": "string",
+                "title": "Call sign",
+                "maxLength": 255
+              },
+              "ac2Ssr": {
+                "type": "string",
+                "title": "SSR code (if applicable)",
+                "maxLength": 255
+              },
+              "ac2FlightNo": {
+                "type": "string",
+                "title": "Flight number",
+                "maxLength": 10,
+                "pattern": "^[A-Za-z0-9]{2,3} ?[0-9]{1,4}[A-Za-z]?$"
+              },
+              "ac2Operator": {
+                "type": "string",
+                "title": "Owner / operator",
+                "maxLength": 255,
+                "default": "Air India"
+              },
+              "ac2Type": {
+                "type": "string",
+                "title": "Aircraft 2 type",
+                "maxLength": 255
+              },
+              "ac2FlightType": {
+                "type": "array",
+                "title": "Type of flight",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "General aviation",
+                    "Military",
+                    "Non-scheduled",
+                    "Scheduled",
+                    "Other",
+                    "Not applicable"
+                  ]
+                },
+                "uniqueItems": true,
+                "minItems": 1
+              },
+              "ac2FlightRules": {
+                "type": "array",
+                "title": "Flight rules",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "IFR",
+                    "VFR"
+                  ]
+                },
+                "uniqueItems": true,
+                "minItems": 1
+              }
+            },
+            "required": [
+              "ac2Registration",
+              "ac2CallSign",
+              "ac2Operator",
+              "ac2Type",
+              "ac2FlightType",
+              "ac2FlightRules"
+            ]
+          },
+          {
+            "properties": {
+              "aircraft2Involved": {
+                "const": "No"
+              }
+            }
+          }
+        ]
+      },
+      "vehicleInvolved": {
+        "oneOf": [
+          {
+            "properties": {
+              "vehicleInvolved": {
+                "const": "Yes"
+              },
+              "veh1Registration": {
+                "type": "string",
+                "title": "Registration number",
+                "maxLength": 255
+              },
+              "veh1CallSign": {
+                "type": "string",
+                "title": "Call sign",
+                "maxLength": 255
+              },
+              "veh1Type": {
+                "type": "string",
+                "title": "Vehicle 1 type",
+                "maxLength": 255
+              },
+              "veh1Owner": {
+                "type": "string",
+                "title": "Owner / operator",
+                "maxLength": 255,
+                "default": "Air India"
+              },
+              "veh1PermitNo": {
+                "type": "string",
+                "title": "Permit number",
+                "maxLength": 255
+              },
+              "veh1OtherDetails": {
+                "type": "array",
+                "title": "Other details",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "Runway inspection",
+                    "Bird control",
+                    "Tugging",
+                    "Towing",
+                    "Fire brigade",
+                    "Maintenance",
+                    "Military"
+                  ]
+                },
+                "uniqueItems": true
+              },
+              "veh1Other": {
+                "type": "string",
+                "title": "Other",
+                "maxLength": 255
+              }
+            },
+            "required": [
+              "veh1Registration",
+              "veh1Type",
+              "veh1Owner"
+            ]
+          },
+          {
+            "properties": {
+              "vehicleInvolved": {
+                "const": "No"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "uiSchema": {
+    "dayNight": {
+      "ui:widget": "radio",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "telephone": {
+      "ui:placeholder": "10-digit number"
+    },
+    "completionDetails": {
+      "ui:options": {
+        "fullWidth": true
+      }
+    },
+    "icaoAerodrome": {
+      "ui:placeholder": "e.g. VIDP"
+    },
+    "surfaceCondition": {
+      "ui:options": {
+        "fullWidth": true
+      }
+    },
+    "evasiveAircraft1": {
+      "ui:widget": "radio",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "evasiveAircraft1Actions": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "evasiveAircraft2": {
+      "ui:widget": "radio",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "evasiveAircraft2Actions": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "evasiveVehicle": {
+      "ui:widget": "radio",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "evasiveVehicleActions": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "commDifficulties": {
+      "ui:widget": "radio",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "commDifficultyTypes": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "atcForgot": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "description": {
+      "ui:widget": "textarea",
+      "ui:options": {
+        "rows": 5,
+        "fullWidth": true
+      }
+    },
+    "evasiveActionDescription": {
+      "ui:widget": "textarea",
+      "ui:options": {
+        "rows": 4,
+        "fullWidth": true
+      }
+    },
+    "reactionTimeAssessment": {
+      "ui:widget": "textarea",
+      "ui:options": {
+        "rows": 4,
+        "fullWidth": true
+      }
+    },
+    "voiceCommReview": {
+      "ui:widget": "textarea",
+      "ui:options": {
+        "rows": 4,
+        "fullWidth": true
+      }
+    },
+    "severityAssessment": {
+      "ui:widget": "textarea",
+      "ui:options": {
+        "rows": 4,
+        "fullWidth": true
+      }
+    },
+    "ac1Registration": {
+      "ui:placeholder": "VT-XXX"
+    },
+    "ac1FlightNo": {
+      "ui:placeholder": "e.g. ZZ 101"
+    },
+    "ac1FlightType": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "ac1FlightRules": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "aircraft2Involved": {
+      "ui:widget": "radio",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "ac2Registration": {
+      "ui:placeholder": "VT-XXX"
+    },
+    "ac2FlightNo": {
+      "ui:placeholder": "e.g. ZZ 101"
+    },
+    "ac2FlightType": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "ac2FlightRules": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "vehicleInvolved": {
+      "ui:widget": "radio",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "veh1OtherDetails": {
+      "ui:widget": "checkboxes",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "ui:groups": [
+      {
+        "title": "Section A: Date and time of incident",
+        "description": "The report number is issued automatically when you submit.",
+        "fields": [
+          "dateTimeOfIncident",
+          "dayNight"
+        ]
+      },
+      {
+        "title": "Section B: Person submitting report",
+        "description": "Your name and job title are taken from your account.",
+        "fields": [
+          "telephone",
+          "facilityUnit",
+          "completionDetails"
+        ]
+      },
+      {
+        "title": "Section C: ICAO aerodrome designator",
+        "fields": [
+          "icaoAerodrome"
+        ]
+      },
+      {
+        "title": "Section D: Surface condition",
+        "fields": [
+          "surfaceCondition"
+        ]
+      },
+      {
+        "title": "Section E: Aircraft, vehicle or person involved",
+        "fields": [
+          "aircraft1",
+          "aircraft2",
+          "aircraft3",
+          "vehicle",
+          "person"
+        ]
+      },
+      {
+        "title": "Section F: Weather conditions",
+        "fields": [
+          "wind",
+          "visibilityRvr",
+          "temperatureC",
+          "ceilingCloud",
+          "weatherAdditional"
+        ]
+      },
+      {
+        "title": "Section G: Evasive action, aircraft 1",
+        "fields": [
+          "evasiveAircraft1",
+          "evasiveAircraft1Actions",
+          "distanceRolled1",
+          "distanceToThreshold1"
+        ]
+      },
+      {
+        "title": "Section H: Evasive action, aircraft 2",
+        "fields": [
+          "evasiveAircraft2",
+          "evasiveAircraft2Actions",
+          "distanceRolled2",
+          "distanceToThreshold2"
+        ]
+      },
+      {
+        "title": "Section I: Evasive action, vehicle",
+        "fields": [
+          "evasiveVehicle",
+          "evasiveVehicleActions"
+        ]
+      },
+      {
+        "title": "Section J: Closest proximity",
+        "fields": [
+          "cpVerticalFt",
+          "cpHorizontalM"
+        ]
+      },
+      {
+        "title": "Section K: Communication difficulties",
+        "fields": [
+          "commDifficulties",
+          "commDifficultyTypes"
+        ]
+      },
+      {
+        "title": "Section L: ATC",
+        "fields": [
+          "atcForgot"
+        ]
+      },
+      {
+        "title": "Section M: Description of incident",
+        "description": "To include a diagram, attach it with the attachments below.",
+        "fields": [
+          "description",
+          "evasiveActionDescription",
+          "reactionTimeAssessment",
+          "voiceCommReview",
+          "severityAssessment"
+        ]
+      },
+      {
+        "title": "Section N: Aircraft details, aircraft 1",
+        "fields": [
+          "ac1Registration",
+          "ac1CallSign",
+          "ac1Ssr",
+          "ac1FlightNo",
+          "ac1Operator",
+          "ac1Type",
+          "ac1FlightType",
+          "ac1FlightRules"
+        ]
+      },
+      {
+        "title": "Section O: Aircraft details, aircraft 2",
+        "fields": [
+          "aircraft2Involved",
+          "ac2Registration",
+          "ac2CallSign",
+          "ac2Ssr",
+          "ac2FlightNo",
+          "ac2Operator",
+          "ac2Type",
+          "ac2FlightType",
+          "ac2FlightRules"
+        ]
+      },
+      {
+        "title": "Section P: Vehicle details, vehicle 1",
+        "fields": [
+          "vehicleInvolved",
+          "veh1Registration",
+          "veh1CallSign",
+          "veh1Type",
+          "veh1Owner",
+          "veh1PermitNo",
+          "veh1OtherDetails",
+          "veh1Other"
+        ]
+      },
+      {
+        "title": "Section Q: Report received by",
+        "description": "Name, designation, organisation and date of the person receiving the report are filled in automatically.",
+        "fields": []
+      },
+      {
+        "title": "Section R: Investigation",
+        "description": "The person or agency responsible for the investigation, and the likely completion date, are set by the safety team, not the reporter.",
+        "fields": []
+      }
+    ]
+  }
+}
